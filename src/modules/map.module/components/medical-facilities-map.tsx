@@ -1,18 +1,20 @@
 import { FC, useState } from 'react';
-import { YMaps, Map } from 'react-yandex-maps';
+import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { DrawerLayout } from '../../../app.module/app.layouts/drawer.layout/drawer.layout';
 import { FacilityContent } from './facility-content';
 import ObjectManagerContainer from './object-manager-container';
 
 interface MedicalFacilitiesMapProps {
     facilities: any,
-    userCoordinates: Number[],
+    mapState: any,
+    userCoordinates: boolean,
 }
 
 export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
     ({
         facilities,
-        userCoordinates
+         mapState,
+         userCoordinates
      }) => {
 
     const [selectedPoint, setSelectedPoint] = useState( facilities.features[0] );
@@ -27,8 +29,17 @@ export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
         return (
         <>
             <YMaps>
-                <Map state={{center: [45.0360, 38.9746], zoom: 12}} width={"100vw"} height={"100vh"}>
-                    <ObjectManagerContainer facilities={facilities} onPlacemarkClick={onPlacemarkClick}/>
+                <Map state={ mapState } width={ "100vw" } height={ "100vh" }>
+                    <ObjectManagerContainer facilities={ facilities } onPlacemarkClick={ onPlacemarkClick }/>
+                    {
+                        userCoordinates &&
+                        <Placemark
+                            geometry={ mapState.center }
+                            options={{
+                                preset:'islands#redPersonIcon'
+                            }}
+                        />
+                    }
                 </Map>
             </YMaps>
             <DrawerLayout

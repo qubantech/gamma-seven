@@ -9,13 +9,16 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './index.css'
 import {createTheme, ThemeProvider} from "@mui/material";
-import { blue, red } from '@mui/material/colors';
+import { blue, pink, red } from '@mui/material/colors';
 
 const theme = createTheme({
     palette: {
         primary: {
             main: red[900],
         },
+        secondary: {
+            main: pink[800],
+        }
     },
 });
 

@@ -14,7 +14,6 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
         <Card sx={{width: "100%"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
-                            style={{justifyContent: 'center'}}
                             action={
                             <IconButton sx={{transform: 'rotate(270deg)' , marginLeft: "auto", width: "50px", height: "50px"}}>
                                 <ChevronRightIcon />
@@ -22,18 +21,18 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                             }
                             title={ <Typography variant={"body1"}> {title} </Typography> }
                             subheader={
-                            <Stack direction={"row"} spacing={1}>
+                            <Stack direction={"row"} spacing={2}>
                                 {badge &&
                                     <div>
                                         badge
                                     </div>}
-                                {date && <Stack direction={"row"}>
-                                    <TimerIcon sx={{width: "20px", height: "20px"}}/>
-                                    <Typography>{date}</Typography>
+                                {date && <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                                    <TimerIcon fontSize={"small"}/>
+                                    <Typography variant={"body2"}>{date}</Typography>
                                 </Stack>}
-                                <div>
+                                <Typography variant={"body2"}>
                                     #{number}
-                                </div>
+                                </Typography>
                             </Stack>}
                 />
             </CardActionArea>
