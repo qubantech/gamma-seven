@@ -8,6 +8,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import { MobileLayout } from '../../app.module/app.layouts';
 
 import facilities from './components/facilities.json';
+import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
 
 const MapPage = () => (
     <div>
@@ -16,10 +17,7 @@ const MapPage = () => (
             centerIcon={<AddIcon />}
             centerColor={blue[700]}
             activeItem={0}
-            menuItems={[
-                menuItem(<MapIcon />, "Карта"),
-                menuItem(<PersonIcon />, "Профиль"),
-            ]} />
+            menuItems={menuItems()} />
     </div>
 );
 

@@ -30,15 +30,14 @@ export const RouterRoot = () => {
 
 // @ts-ignore
 export const menuItem = (icon: JSX.Element, label?: string, link: string) => {
-    const navigate = useNavigate()
+
     return (
-        <div onClick={() => navigate(link)}>
+        <Link to={link}>
             {icon}
             {label && <div>{label}</div>}
-        </div>
+        </Link>
     )
 }
-
 
 const App = () => {
 
@@ -48,6 +47,7 @@ const App = () => {
     useEffect(() => {
         setWatchedObject('Этот 1111текст отпавляется в базу и возвращается обратно');
     }, [])
+
 
     return (
         <>
