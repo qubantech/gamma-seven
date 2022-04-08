@@ -27,7 +27,7 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 const ExpandCardLayout = ({onClick, avatar, title, subtitle, righttext, description}:
-                        { onClick?: () => void, avatar?: JSX.Element, title: string, subtitle: string, righttext?: string, description?: JSX.Element }) => {
+                        { onClick?: () => void, avatar?: JSX.Element, title: JSX.Element, subtitle: JSX.Element, righttext?: string, description?: JSX.Element }) => {
     let iconSize = "50px"
     const [expanded, setExpanded] = React.useState(false);
 
@@ -37,7 +37,7 @@ const ExpandCardLayout = ({onClick, avatar, title, subtitle, righttext, descript
     };
 
     return (
-        <Card sx={{width: "80vw", marginTop: "50px", marginBottom: "100px"}}>
+        <Card sx={{width: "100%"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
                             avatar={
