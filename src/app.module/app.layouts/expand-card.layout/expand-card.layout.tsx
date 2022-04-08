@@ -46,7 +46,7 @@ const ExpandCardLayout = ({onClick, avatar, title, subtitle, righttext, descript
                                 </Avatar>
                             }
                             action={
-                                <Stack alignItems="center" pr={"16px"} direction="row" spacing={2}>
+                                <Stack alignItems="center" direction="row" spacing={2}>
                                     <Typography variant={"h5"}>{righttext}</Typography>
                                     {description &&
                                         <ExpandMore

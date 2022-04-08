@@ -16,9 +16,9 @@ const ProfileCardLayout = ({onClick, title, badge, date, number}:
                 <CardHeader onClick={onClick}
                             style={{justifyContent: 'center'}}
                             action={
-                                        <IconButton sx={{marginLeft: "auto", width: "50px", height: "50px"}}>
-                                            <ChevronRightIcon />
-                                        </IconButton>
+                            <IconButton sx={{transform: 'rotate(270deg)' , marginLeft: "auto", width: "50px", height: "50px"}}>
+                                <ChevronRightIcon />
+                            </IconButton>
                             }
                             title={title}
                             subheader={

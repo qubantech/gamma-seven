@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MobileLayout } from '../../app.module/app.layouts';
 import AddIcon from '@mui/icons-material/Add';
 import { blue, red } from '@mui/material/colors';
@@ -15,11 +15,15 @@ import CheckIcon from '@mui/icons-material/Check';
 import ExpandCardLayout from '../../app.module/app.layouts/expand-card.layout/expand-card.layout';
 import Typography from '@mui/material/Typography';
 import ProfileCardLayout from '../../app.module/app.layouts/profile-card.layout/profile-card.layout';
+import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/infodrawer.layout';
+import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
 
 
 const Profile = () => {
     const [user, loading, error ] = useAuthState(auth);
     const [value, setValue] = React.useState(0);
+
+    const [idDrawer, setIdDrawer] = useState("")
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
@@ -62,7 +66,7 @@ const Profile = () => {
     const tabsContent = () => (
         <>
             <TabPanel value={value} index={0}>
-                <ProfileCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => {}}/>
+                <ProfileCardLayout title={"Тема жалобы"} date={"2 дня"} number={228} onClick={() => {setIdDrawer("1")}}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 sas
@@ -84,14 +88,14 @@ const Profile = () => {
                 <Tab icon={<CheckIcon/>} iconPosition="start" label={"Завершенные"}/>
             </Tabs>
                 {tabsContent()}
-        <MobileLayout
-            centerIcon={<AddIcon />}
-            centerColor={blue[700]}
-            activeItem={2}
-            menuItems={[
-                menuItem(<MapIcon />, "Карта"),
-                menuItem(<PersonIcon />, "Профиль"),
-            ]} />
+            <MobileLayout
+                centerIcon={<AddIcon />}
+                centerColor={blue[700]}
+                activeItem={2}
+                menuItems={
+                    menuItems()
+                } />
+                <InfodrawerLayout isOpen={idDrawer && true || false} onChangeState={(b:boolean)=>{if (!b) setIdDrawer("") }} info={idDrawer}/>
             </Container>
     </div>
 )};

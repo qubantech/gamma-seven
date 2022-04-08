@@ -2,14 +2,11 @@ import React, { useEffect } from 'react';
 
 import { auth } from './app.configs';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import AddIcon from '@mui/icons-material/Add';
-import MapIcon from '@mui/icons-material/Map';
-import PersonIcon from '@mui/icons-material/Person';
 
 import { Loader, ServerError } from './app.components';
 import { AuthLayout, MobileLayout } from './app.layouts';
 
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { CommonModules } from '../modules';
 import { useWatchedObject } from "./app.services/app.realtimedb.service";
 import { RTDB } from "./app.resources/app.resouces.realtimedb";
@@ -31,9 +28,11 @@ export const RouterRoot = () => {
     </BrowserRouter>
 }
 
-export const menuItem = (icon: JSX.Element, label?: string) => {
+// @ts-ignore
+export const menuItem = (icon: JSX.Element, label?: string, link: string) => {
+    const navigate = useNavigate()
     return (
-        <div>
+        <div onClick={() => navigate(link)}>
             {icon}
             {label && <div>{label}</div>}
         </div>
