@@ -2,6 +2,9 @@ import React, { useEffect } from 'react';
 
 import { auth } from './app.configs';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import AddIcon from '@mui/icons-material/Add';
+import MapIcon from '@mui/icons-material/Map';
+import PersonIcon from '@mui/icons-material/Person';
 
 import { Loader, ServerError } from './app.components';
 import { AuthLayout, MobileLayout } from './app.layouts';
@@ -11,9 +14,7 @@ import { CommonModules } from '../modules';
 import { useWatchedObject } from "./app.services/app.realtimedb.service";
 import { RTDB } from "./app.resources/app.resouces.realtimedb";
 
-import { red } from '@mui/material/colors';
-import RestoreIcon from '@mui/icons-material/Restore';
-import PersonIcon from '@mui/icons-material/Person';
+import { blue, red } from '@mui/material/colors';
 
 export const RouterRoot = () => {
     return <BrowserRouter>
@@ -30,6 +31,15 @@ export const RouterRoot = () => {
     </BrowserRouter>
 }
 
+export const menuItem = (icon: JSX.Element, label?: string) => {
+    return (
+        <div>
+            {icon}
+            {label && <div>{label}</div>}
+        </div>
+    )
+}
+
 
 const App = () => {
 
@@ -39,15 +49,6 @@ const App = () => {
     useEffect(() => {
         setWatchedObject('Этот текст отпавляется в базу и возвращается обратно');
     }, [])
-
-    const menuItem = (icon: JSX.Element, label?: string) => {
-        return (
-            <div>
-                {icon}
-                {label && <div>{label}</div>}
-            </div>
-        )
-    }
 
     return (
         <>
@@ -77,15 +78,6 @@ const App = () => {
                 && <Loader/>
                 || <AuthLayout user={user}/>
             }
-            <MobileLayout
-                // centerIcon={<RestoreIcon/>}
-                centerColor={red[900]}
-                menuItems={[
-                    menuItem(<RestoreIcon/>, "Restore"),
-                    menuItem(<RestoreIcon/>, "Restore"),
-                    menuItem(<RestoreIcon/>, "Restore"),
-                    menuItem(<PersonIcon/>, "Person"),
-            ]}/>
         </>
     );
 

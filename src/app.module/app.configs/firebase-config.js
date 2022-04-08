@@ -7,6 +7,7 @@ const app = initializeApp({
     apiKey: `${process.env.API_KEY}`,
     authDomain: `${process.env.AUTH_DOMAIN}`,
     projectId: `${process.env.PROJECT_ID}`,
+    databaseURL: "https://gamma-seven-default-rtdb.europe-west1.firebasedatabase.app/",
     storageBucket: `${process.env.STORAGE_BUCKET}`,
     messagingSenderId: `${process.env.MESSAGING_SENDER_ID}`,
     appId: `${process.env.APP_ID}`,
