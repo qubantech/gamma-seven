@@ -46,7 +46,7 @@ const App = () => {
     const { watchedObject, setWatchedObject } = useWatchedObject<String>(RTDB.SAMPLE_PATH);
 
     useEffect(() => {
-        setWatchedObject('Этот текст отпавляется в базу и возвращается обратно');
+        setWatchedObject('Этот 1111текст отпавляется в базу и возвращается обратно');
     }, [])
 
     return (

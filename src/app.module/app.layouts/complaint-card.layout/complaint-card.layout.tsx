@@ -7,7 +7,7 @@ import TimerIcon from '@mui/icons-material/Timer';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 
-const ProfileCardLayout = ({onClick, title, badge, date, number}:
+const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                                { onClick?: () => void, title: string, badge?: JSX.Element, date?: string, number:number}) => {
 
     return(
@@ -20,7 +20,7 @@ const ProfileCardLayout = ({onClick, title, badge, date, number}:
                                 <ChevronRightIcon />
                             </IconButton>
                             }
-                            title={title}
+                            title={ <Typography variant={"body1"}> {title} </Typography> }
                             subheader={
                             <Stack direction={"row"} spacing={1}>
                                 {badge &&
@@ -40,4 +40,4 @@ const ProfileCardLayout = ({onClick, title, badge, date, number}:
         </Card>
     )
 }
-export default ProfileCardLayout
+export default ComplaintCardLayout

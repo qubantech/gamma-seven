@@ -1,0 +1,257 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "id": 0,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.034823,
+                    38.973591
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Городская клиническая больница № 1",
+                "title": "МБУЗ Городская клиническая больница № 1"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 1,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.016977,
+                    39.030398
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Городская клиническая больница № 3",
+                "title": "МБУЗ Городская клиническая больница № 3"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 2,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.019717,
+                    39.088222
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Краснодарская городская больница № 4",
+                "title": "МБУЗ Краснодарская городская больница № 4"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 3,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.05371,
+                    38.998418
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Краснодарская городская клиническая больница скорой медицинской помощи",
+                "title": "МБУЗ Краснодарская городская клиническая больница скорой медицинской помощи"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 4,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.029317,
+                    39.004284
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (поликлиника)",
+                "title": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (поликлиника)"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 5,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.029731,
+                    39.015414
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (стационар)",
+                "title": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (стационар)"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 6,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.021673,
+                    38.981359
+                ]
+            },
+            "properties": {
+                "hintContent": "МБУЗ Участковая больница «Старокорсунская»",
+                "title": "МБУЗ Участковая больница «Старокорсунская»"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 7,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.017557,
+                    38.965602
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Краевой медицинский центр мобилизационных резервов «Резерв» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Краевой медицинский центр мобилизационных резервов «Резерв» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 8,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.010777,
+                    38.96845
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Краевая больница № 3» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Краевая больница № 3» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 9,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.011962,
+                    38.965216
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Специализированная клиническая психиатрическая больница № 1» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Специализированная клиническая психиатрическая больница № 1» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 10,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.059396,
+                    38.921989
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Краевая клиническая больница № 2 » министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Краевая клиническая больница № 2 » министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 11,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.041903,
+                    38.983371
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Специализированная клиническая инфекционная больница» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Специализированная клиническая инфекционная больница» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 12,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.062216,
+                    39.020337
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Краевая клиническая больница № 1 имени профессора С.В.Очаповского» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Краевая клиническая больница № 1 имени профессора С.В.Очаповского» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 13,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    45.120414,
+                    39.025349
+                ]
+            },
+            "properties": {
+                "hintContent": "ГБУЗ «Специализированная психиатрическая больница №7» министерства здравоохранения Краснодарского края",
+                "title": "ГБУЗ «Специализированная психиатрическая больница №7» министерства здравоохранения Краснодарского края"
+            },
+            "options": {
+                "preset": "islands#pinkMedicalIcon"
+            }
+        }
+    ]
+}
