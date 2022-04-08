@@ -66,7 +66,7 @@ const Profile = () => {
     const tabsContent = () => (
         <>
             <TabPanel value={value} index={0}>
-                <ComplaintCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => {}}/>
+                <ComplaintCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => setIdDrawer("1")}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 sas

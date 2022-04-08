@@ -8,7 +8,7 @@ const InfodrawerLayout = ({isOpen, onChangeState, info, height = "auto"}:
         <DrawerLayout
             isOpen={isOpen}
             onChangeState={onChangeState}
-            height={height && height || ""}
+            height={height && height || "auto"}
             children={
             <div>
                 <Stack pb={"10px"} direction={"row"} alignItems={"center"} spacing={1}>
