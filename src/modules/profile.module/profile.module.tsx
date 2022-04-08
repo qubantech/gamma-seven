@@ -14,7 +14,7 @@ import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandCardLayout from '../../app.module/app.layouts/expand-card.layout/expand-card.layout';
 import Typography from '@mui/material/Typography';
-import ProfileCardLayout from '../../app.module/app.layouts/profile-card.layout/profile-card.layout';
+import ComplaintCardLayout from '../../app.module/app.layouts/complaint-card.layout/complaint-card.layout';
 
 
 const Profile = () => {
@@ -62,7 +62,7 @@ const Profile = () => {
     const tabsContent = () => (
         <>
             <TabPanel value={value} index={0}>
-                <ProfileCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => {}}/>
+                <ComplaintCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => {}}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
                 sas
