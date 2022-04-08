@@ -16,6 +16,7 @@ export const LoginLayout = () => {
 
     const login = () => {
         signInWithEmailAndPassword(email, password)
+        console.log(user)
     };
 
     return (

@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database';
 
 const app = initializeApp({
-    apiKey: `${process.env.API_KEY}`,
+    apiKey: "AIzaSyBpca4FGJ6w5SFIReLo4ixEmZCm9mY_hnk",
     authDomain: `${process.env.AUTH_DOMAIN}`,
     projectId: `${process.env.PROJECT_ID}`,
     databaseURL: "https://gamma-seven-default-rtdb.europe-west1.firebasedatabase.app/",
