@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.module/app.configs';
 import { useUser } from '../../app.module/app.services/app.user.service';
-import { Box, Container, Tab, Tabs } from '@mui/material';
+import { Box, Button, Container, Tab, Tabs } from '@mui/material';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandCardLayout from '../../app.module/app.layouts/expand-card.layout/expand-card.layout';
@@ -14,8 +14,15 @@ import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/inf
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
 import axios from 'axios';
 import { auditService } from '../../app.module/app.services/app.auditstat.service';
+
+
+
+
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
+import { DrawerLayout } from '../../app.module/app.layouts/drawer.layout/drawer.layout';
+import ReportsCardButton from './components/reports-card-button';
+import ReportsDrawerContent from './components/reports-drawer-content';
 
 
 const Profile = () => {
@@ -91,6 +98,14 @@ const Profile = () => {
         }
     },[user])
 
+//backgroundColor: "rgba(244,170,151,0.3)"
+
+    const [reportsDrawer, setReportsDrawer] = useState(false);
+
+    const onReportsCardButtonClick = () => {
+        setReportsDrawer(true)
+    }
+
     return(
         <div>
             <Container>
@@ -101,18 +116,26 @@ const Profile = () => {
                                   <Typography m={0} p={0} variant={"subtitle2"}>{userdata.watchedObject?.lastName}</Typography> || <div></div>}
                               righttext={""}
                               description={description()}
+
             />
-            <Tabs sx={{paddingTop: "10px", paddingBottom: "10px"}} variant={"fullWidth"} value={value} onChange={handleChange}>
-                <Tab icon={<HourglassBottomIcon/>} iconPosition="start" label={"В работе"}/>
-                <Tab icon={<CheckIcon/>} iconPosition="start" label={"Завершенные"}/>
-            </Tabs>
-                {tabsContent()}
-            <MobileLayout
-                centerIcon={<AddIcon />}
-                activeItem={2}
-                menuItems={
-                    menuItems()
-                } />
+                <ReportsCardButton onClick={ () => setReportsDrawer(true) }/>
+                <DrawerLayout
+                    isOpen={ reportsDrawer }
+                    onChangeState={ setReportsDrawer }
+                    children={ <ReportsDrawerContent/> }
+                />
+
+
+                <Tabs sx={{paddingTop: "10px", paddingBottom: "10px"}} variant={"fullWidth"} value={value} onChange={handleChange}>
+                    <Tab icon={<HourglassBottomIcon/>} iconPosition="start" label={"В работе"}/>
+                    <Tab icon={<CheckIcon/>} iconPosition="start" label={"Завершенные"}/>
+                </Tabs>
+                    {tabsContent()}
+                <MobileLayout
+                    centerIcon={<AddIcon />}
+                    activeItem={2}
+                    menuItems={menuItems()}
+                />
                 <InfodrawerLayout isOpen={idDrawer && true || false} onChangeState={(b:boolean)=>{if (!b) setIdDrawer("") }} info={idDrawer}/>
             </Container>
     </div>
