@@ -72,7 +72,7 @@ export const Report: FC<AuditStat> = ({
                             <Typography variant={ "body2" } >В процессе: { complaintsPending }</Typography>
                             <Typography variant={ "body2" } >Отказано: { complaintsRejected }</Typography>
                             {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
-                            <DescriptionTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                            <DescriptionTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
                     </Paper>
                     </Grid>
@@ -81,7 +81,7 @@ export const Report: FC<AuditStat> = ({
                         <div style={{padding:"15px"}}>
                             <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ maxComplaintProcessingTime } мин.</b></Typography>
                             <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
-                            <AccessTimeTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                            <AccessTimeTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
                     </Paper>
                     </Grid>
