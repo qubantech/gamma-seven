@@ -6,12 +6,15 @@ import * as React from 'react'
 import TimerIcon from '@mui/icons-material/Timer';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
+import { COMPLIANT_CARD_COLOR } from '../../../index';
+
+
 
 const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                                { onClick?: () => void, title: string, badge?: JSX.Element, date?: string, number:number}) => {
 
     return(
-        <Card sx={{width: "100%", backgroundColor: "#FAD9E6", boxShadow: "0px 3px 3px darkGrey"}}>
+        <Card sx={{width: "100%", backgroundColor:  COMPLIANT_CARD_COLOR, boxShadow: "0px 3px 3px darkGrey"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
                             action={

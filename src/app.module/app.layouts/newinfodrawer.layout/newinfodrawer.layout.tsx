@@ -1,10 +1,11 @@
 import { DrawerLayout } from '../drawer.layout/drawer.layout';
-import { Autocomplete, Button, Chip, IconButton, Stack, TextField } from '@mui/material';
+import { Autocomplete, Button, IconButton, Stack, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import facilities from '../../../modules/map.module/components/facilities.json';
 import React from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState } from 'react';
+import { PRIMARY_COLOR } from '../../../index';
 
 type newReportInterface = {
     theme: string
@@ -71,7 +72,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                             }
                             onChange={handleChangeAutoComplete2}
                         />
-                        <IconButton color={ "primary" } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: "1px solid #f4aa97"}}>
+                        <IconButton color={ "primary" } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: `1px solid ${PRIMARY_COLOR}`}}>
                             <LocationOnIcon fontSize={"large"}/>
                         </IconButton>
                     </Stack>

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { AppBar, Button, Dialog, IconButton, Slide, Stack, Toolbar, Typography } from '@mui/material';
 
-import FeedOutlinedIcon from '@mui/icons-material/FeedOutlined';
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import { Report } from './report';
 import { TransitionProps } from '@mui/material/transitions';
@@ -46,6 +45,7 @@ const ReportsList = () => {
                             <Button
                                 fullWidth
                                 variant={ "contained" }
+
                                 startIcon={ <ArticleOutlinedIcon/> }
                                 onClick={ () => handleClickOpen(report) }
                             >
@@ -62,7 +62,7 @@ const ReportsList = () => {
                 onClose={ handleClose }
                 TransitionComponent={ Transition }
             >
-                <AppBar sx={{ position: 'relative', mb: "10px" }}>
+                <AppBar color={ "secondary" } sx={{ position: 'relative', mb: "10px" }}>
                     <Toolbar>
                         <IconButton
                             edge="start"
@@ -72,7 +72,7 @@ const ReportsList = () => {
                         >
                             <CloseIcon />
                         </IconButton>
-                        <Typography sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
+                        <Typography  sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
                             { currentReport }
                         </Typography>
                     </Toolbar>

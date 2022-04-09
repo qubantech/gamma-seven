@@ -9,6 +9,7 @@ import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.lay
 import { Autocomplete, Container, IconButton, Stack, TextField } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { PRIMARY_COLOR } from '../../index';
 
 const MapPage = () => {
     const [mapState, setMapState] = useState({center: [45.0360, 38.9746], zoom: 12});
@@ -44,6 +45,7 @@ const MapPage = () => {
             }}>
                 <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
                     <Autocomplete
+                        color={ "secondary" }
                         sx={{ marginTop: "30px", marginBottom: "30px", width: "100%" }}
                         options={ facilities.features }
                         defaultValue={ null }
@@ -60,7 +62,7 @@ const MapPage = () => {
                             setMapState({ center: value.geometry.coordinates, zoom: 15 })
                         }}
                     />
-                    <IconButton color={ "primary" } onClick={ onGeopositionClick } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: "1px solid #f4aa97"}}>
+                    <IconButton color={ "primary" } onClick={ onGeopositionClick } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: `1px solid ${PRIMARY_COLOR}`}}>
                         <LocationOnIcon fontSize={"large"}/>
                     </IconButton>
                 </Stack>

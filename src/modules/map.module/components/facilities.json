@@ -16,7 +16,7 @@
                 "title": "МБУЗ Городская клиническая больница № 1"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -34,7 +34,7 @@
                 "title": "МБУЗ Городская клиническая больница № 3"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -52,7 +52,7 @@
                 "title": "МБУЗ Краснодарская городская больница № 4"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -70,7 +70,7 @@
                 "title": "МБУЗ Краснодарская городская клиническая больница скорой медицинской помощи"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -88,7 +88,7 @@
                 "title": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (поликлиника)"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -106,7 +106,7 @@
                 "title": "МБУЗ Медико-санитарная часть «масложиркомбинат краснодарский» (стационар)"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -124,7 +124,7 @@
                 "title": "МБУЗ Участковая больница «Старокорсунская»"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -142,7 +142,7 @@
                 "title": "ГБУЗ «Краевой медицинский центр мобилизационных резервов «Резерв» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -160,7 +160,7 @@
                 "title": "ГБУЗ «Краевая больница № 3» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -178,7 +178,7 @@
                 "title": "ГБУЗ «Специализированная клиническая психиатрическая больница № 1» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -196,7 +196,7 @@
                 "title": "ГБУЗ «Краевая клиническая больница № 2 » министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -214,7 +214,7 @@
                 "title": "ГБУЗ «Специализированная клиническая инфекционная больница» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -232,7 +232,7 @@
                 "title": "ГБУЗ «Краевая клиническая больница № 1 имени профессора С.В.Очаповского» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         },
         {
@@ -250,7 +250,7 @@
                 "title": "ГБУЗ «Специализированная психиатрическая больница №7» министерства здравоохранения Краснодарского края"
             },
             "options": {
-                "preset": "islands#pinkMedicalIcon"
+                "preset": "islands#blueMedicalIcon"
             }
         }
     ]
