@@ -26,13 +26,13 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                                     <div>
                                         badge
                                     </div>}
-                                {date && <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                                {date && <Stack direction={"row"} alignItems={"center"} spacing={1} style={{marginTop: '1em'}}>
                                     <TimerIcon fontSize={"small"}/>
                                     <Typography variant={"body2"}>{date}</Typography>
+                                    <Typography variant={"body2"}>
+                                        #{number}
+                                    </Typography>
                                 </Stack>}
-                                <Typography variant={"body2"}>
-                                    #{number}
-                                </Typography>
                             </Stack>}
                 />
             </CardActionArea>

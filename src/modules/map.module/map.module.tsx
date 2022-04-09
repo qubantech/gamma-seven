@@ -42,7 +42,6 @@ const MapPage = () => {
                 borderRadius: "0 0 30px 30px",
                 width: "100vw",
             }}>
-
                 <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
                     <Autocomplete
                         sx={{ marginTop: "30px", marginBottom: "30px", width: "100%" }}
