@@ -1,9 +1,12 @@
 import {BottomNavigation, BottomNavigationAction, Paper} from "@mui/material";
-import React from "react";
+import React, { useState } from 'react';
 import "./mobile.layout.css"
 import { menuItem } from '../../app';
 import MapIcon from '@mui/icons-material/Map';
 import PersonIcon from '@mui/icons-material/Person';
+import NewinfoDrawer from '../newinfodrawer.layout/newinfodrawer.layout';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../../app.configs';
 
 export const menuItems = () => [
     menuItem(<MapIcon />, "Карта", "/map"),
@@ -12,6 +15,8 @@ export const menuItems = () => [
 export function MobileLayout ({centerIcon, centerColor, menuItems, activeItem=-1}:
                             {centerIcon?: JSX.Element, centerColor?: string, menuItems: Array<JSX.Element>, activeItem?:number}){
     const [value, setValue] = React.useState(activeItem);
+    const [isOpenNewDrawer, setIsOpenNewDrawer] = useState(false)
+    const [ user, loading, error ] = useAuthState(auth);
 
     return (
             <Paper sx={{height:50, position: 'fixed',zIndex:50, bottom: 0, left: 0, right: 0 }} elevation={3}>
@@ -37,12 +42,14 @@ export function MobileLayout ({centerIcon, centerColor, menuItems, activeItem=-1
                                                                backgroundColor: "#f17ac0"
                                                            }}
                                                            value={1}
+                                                           onClick={() => setIsOpenNewDrawer(true)}
                                                            icon={centerIcon}/>}
                     {menuItems.slice(menuItems.length/2, menuItems.length).map((el,index) => {
                         return (
                             <BottomNavigationAction className={"animationItem"} key={index+menuItems.length/2} value={index+menuItems.length/2+1} icon={el} />
                         )
                     })}
+                    <NewinfoDrawer isOpen={isOpenNewDrawer} onChangeState={setIsOpenNewDrawer} uid={user?.uid || ""}/>
                 </BottomNavigation>
             </Paper>
     )

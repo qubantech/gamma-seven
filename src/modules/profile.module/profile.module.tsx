@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { MobileLayout } from '../../app.module/app.layouts';
 import AddIcon from '@mui/icons-material/Add';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,6 +12,8 @@ import Typography from '@mui/material/Typography';
 import ComplaintCardLayout from '../../app.module/app.layouts/complaint-card.layout/complaint-card.layout';
 import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/infodrawer.layout';
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
+import axios from 'axios';
+import { auditService } from '../../app.module/app.services/app.auditstat.service';
 
 
 const Profile = () => {
@@ -68,6 +70,15 @@ const Profile = () => {
             </TabPanel>
         </>
     )
+
+    useEffect(()=> {
+        if (user) {
+        auditService.getAudit(user?.uid || "")
+            .then((resp) => {
+                console.log(resp.data)
+            })
+        }
+    },[user])
 
     return(
         <div>

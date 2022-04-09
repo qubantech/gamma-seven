@@ -7,6 +7,25 @@ type User = {
     age: number
 }
 
-export type {
-    User
+type AuditStat = {
+    complaintsAmount: number,
+    complaintsAmountPerDayHist: Array<number>,
+    complaintsMeaningfulnessMeanScore: number,
+    complaintsPending: number,
+    complaintsProcessed: number,
+    complaintsRejected: number,
+    createdAt: string,
+    maxComplaintProcessingTime: number,
+    meanComplaintProcessingTime: number,
+    mostPopularKeywords: Array<String>,
+    mostPopularScripts: Array<String>,
+    mostPopularTopics: Array<String>,
+    peakComplaintsAmountDate: string
+    peakComplaintsAmountNumber: number,
 }
+
+export type {
+    User,
+    AuditStat
+}
+
