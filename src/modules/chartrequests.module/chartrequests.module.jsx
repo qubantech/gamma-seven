@@ -15,10 +15,6 @@ const options = {
     isStacked: true,
     legend: { position: "top", maxLines: 3 },
     curveType: 'function',
-    /*series:{
-        0:{curveType: 'function'},
-        1:{curveType: 'function'},
-    },*/
 };
 
 const rand = () => {
