@@ -1,12 +1,13 @@
 import React from 'react';
-import { AppBar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Tooltip } from '@mui/material';
+import { AppBar, Box, Button, IconButton, Menu, MenuItem, Stack, Toolbar, Tooltip } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../app.configs';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
-const DesktopLayout = () => {
+const DesktopLayout = ({open, setOpen}:{open:boolean, setOpen:(b:boolean)=> void}) => {
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
     const navigate = useNavigate()
     const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -25,11 +26,16 @@ const DesktopLayout = () => {
 
     return (
         <>
-            <AppBar position="static">
+            <AppBar sx={{zIndex:1500}} position="static">
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Просмотр заявок
                     </Typography>
+                    <Stack alignItems={"center"} spacing={0} pr={"10px"}>
+                        <Typography variant={"caption"}>Сегодня/по плану:</Typography>
+                        <Typography color={"red"}> 6/20</Typography>
+                    </Stack>
+                    <IconButton sx={{marginRight:'10px'}} onClick={() => {setOpen(!open)}}><QueryStatsIcon/></IconButton>
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
