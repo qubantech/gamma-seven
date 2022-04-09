@@ -1,6 +1,9 @@
-import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
+import { useAuthState, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { auth } from "../../app.configs";
-import React, { useState } from "react";
+import React, { useEffect, useState } from 'react';
+import { useUser } from '../../app.services/app.user.service';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@mui/material';
 
 export const LoginLayout = () => {
 
@@ -11,13 +14,26 @@ export const LoginLayout = () => {
         error
     ] = useSignInWithEmailAndPassword(auth);
 
+    const navigate = useNavigate()
+
     const [ email, setEmail ] = useState('')
     const [ password, setPassword ] = useState('')
 
     const login = () => {
         signInWithEmailAndPassword(email, password)
         console.log(user)
+        navigate('/')
     };
+
+    const loginManager = () => {
+        signInWithEmailAndPassword("mmail@mail.ru", "manager")
+        navigate('/')
+    }
+
+    const loginUser = () => {
+        signInWithEmailAndPassword("mail@mail.ru", "123456")
+        navigate('/')
+    }
 
     return (
         <div>
@@ -36,6 +52,8 @@ export const LoginLayout = () => {
             />
 
             <button onClick={login}> Login</button>
+            <Button onClick={loginManager}>Login as Manager</Button>
+            <Button onClick={loginUser}>Login as User</Button>
             {error?.message}
         </div>
     );

@@ -4,7 +4,8 @@ type User = {
     lastName: string | null,
     sex: "m" | "f",
     city: string | null,
-    age: number
+    age: number,
+    role: string
 }
 
 type AuditStat = {

@@ -14,6 +14,8 @@ import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/inf
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
 import axios from 'axios';
 import { auditService } from '../../app.module/app.services/app.auditstat.service';
+import { signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 
 const Profile = () => {
@@ -21,11 +23,17 @@ const Profile = () => {
     const [value, setValue] = React.useState(0);
 
     const [idDrawer, setIdDrawer] = useState("")
+    const navigate = useNavigate()
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
     const userdata = useUser(user?.uid || "0")
+
+    const logout = () => {
+        signOut(auth)
+            .then((res) => navigate("/"))
+    }
 
     const description = () => (
         <div>
@@ -83,7 +91,7 @@ const Profile = () => {
     return(
         <div>
             <Container>
-            <ExpandCardLayout onClick={() => {}}
+            <ExpandCardLayout onClick={() => {logout()}}
                               title={userdata.watchedObject?.firstName &&
                                   <Typography m={0} p={0} variant={"body1"}>{userdata.watchedObject?.firstName}</Typography> || <div></div>}
                               subtitle={userdata.watchedObject?.lastName &&

@@ -11,7 +11,7 @@ import { CommonModules } from '../modules';
 import { useWatchedObject } from "./app.services/app.realtimedb.service";
 import { RTDB } from "./app.resources/app.resouces.realtimedb";
 
-import { blue, red } from '@mui/material/colors';
+import { useUser } from './app.services/app.user.service';
 
 export const RouterRoot = () => {
     return <BrowserRouter>
@@ -43,10 +43,20 @@ const App = () => {
 
     const [ user, loading, error ] = useAuthState(auth);
     const { watchedObject, setWatchedObject } = useWatchedObject<String>(RTDB.SAMPLE_PATH);
+    const userdata = useUser(user?.uid || "0")
+    const navigate = useNavigate()
 
     useEffect(() => {
         setWatchedObject('Этот 1111текст отпавляется в базу и возвращается обратно');
     }, [])
+
+    useEffect(() => {
+        console.log(userdata)
+        if (!loading && userdata.watchedObject) {
+            if (userdata.watchedObject?.role == "manager") navigate("/managerprofile")
+            else navigate("/profile")
+        }
+    },[userdata])
 
 
     return (
