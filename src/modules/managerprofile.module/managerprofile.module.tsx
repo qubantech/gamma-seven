@@ -1,8 +1,24 @@
 import React, { useState } from 'react';
 import DesktopLayout from '../../app.module/app.layouts/desktop.layout/desktop.layout';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
-import { Chip, CircularProgress, Stack } from '@mui/material';
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
+import {
+    Chip,
+    CircularProgress,
+    Divider,
+    Drawer,
+    IconButton, List,
+    ListItem,
+    ListItemIcon,
+    ListItemText,
+    Stack,
+} from '@mui/material';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ManagermodalLayout from '../../app.module/app.layouts/managermodal.layout/managermodal.layout';
+import { styled, useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+
+let drawerWidth = 480;
 
 const ManagerProfileModule = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
@@ -56,20 +72,78 @@ const ManagerProfileModule = () => {
             flex:1,
             renderCell: (params => <CircularProgress variant="determinate" value={params.value} />
             )
-            /*valueSetter: (params => {
-                <CircularProgress variant="determinate" value={100} />
-            })*/
         },
     ];
 
     const rows = [ {id:1, title:"sdhj gh jf gg  fd  ft g cf   vfc fh b fcdrfth jg fdxs dfgh j gfd", tags:["ass","sass", "sass"], maxTime:2, city: "qw", status: 50}, {id:2, tags:"ass", maxTime:2, city: "qw"}]
 
+    const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+        open?: boolean;
+    }>(({ theme, open }) => ({
+        flexGrow: 1,
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        marginRight: drawerWidth,
+        ...(open && {
+            transition: theme.transitions.create('margin', {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginRight: 0,
+        }),
+    }));
+
+    interface AppBarProps extends MuiAppBarProps {
+        open?: boolean;
+    }
+
+    const AppBar = styled(MuiAppBar, {
+        shouldForwardProp: (prop) => prop !== 'open',
+    })<AppBarProps>(({ theme, open }) => ({
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.sharp,
+            duration: theme.transitions.duration.leavingScreen,
+        }),
+        ...(open && {
+            width: `calc(100% - ${drawerWidth}px)`,
+            transition: theme.transitions.create(['margin', 'width'], {
+                easing: theme.transitions.easing.easeOut,
+                duration: theme.transitions.duration.enteringScreen,
+            }),
+            marginRight: drawerWidth,
+        }),
+    }));
+
+    const DrawerHeader = styled('div')(({ theme }) => ({
+        display: 'flex',
+        alignItems: 'center',
+        padding: theme.spacing(0, 1),
+        // necessary for content to be below app bar
+        ...theme.mixins.toolbar,
+        justifyContent: 'flex-start',
+    }));
+
+    const theme = useTheme();
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
 
     return (
         <>
-            <DesktopLayout/>
-            <div style={{width:"100%"}}>
+            <AppBar position="fixed" open={open}>
+                <DesktopLayout open={open} setOpen={setOpen}/>
+            </AppBar>
+            <Main open={!open}>
                 <DataGrid
+                    sx={{marginTop:"64px"}}
                     autoHeight={true}
                     rows={rows}
                     columns={columns}
@@ -82,7 +156,48 @@ const ManagerProfileModule = () => {
                     }}
                 />
                 <ManagermodalLayout isOpen={isOpenModal} onChangeState={setIsOpenModal} info={info} />
-            </div>
+            </Main>
+            <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                    },
+                }}
+                variant="persistent"
+                anchor="right"
+                open={open}
+            >
+                <DrawerHeader>
+                    <IconButton onClick={handleDrawerClose}>
+                        <ArrowBackIosIcon/>
+                        <Typography variant={"h6"} align={"center"}>Статистика</Typography>
+                    </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <List>
+                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                <ArrowBackIosIcon/>
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+                <List>
+                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
+                        <ListItem button key={text}>
+                            <ListItemIcon>
+                                вылов
+                            </ListItemIcon>
+                            <ListItemText primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
         </>
     )
 }

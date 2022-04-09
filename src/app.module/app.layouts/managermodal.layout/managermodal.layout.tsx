@@ -10,7 +10,7 @@ import {
     Stack,
     TextField,
 } from '@mui/material';
-import DialogContentText from '@mui/material/DialogContentText';
+import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
 
@@ -40,6 +40,7 @@ const ManagermodalLayout = ({isOpen, onChangeState, info}:
     useEffect(() => {
         setChipsActive(new Array(chips.length).fill(false));
     },[])
+
 
     return(
         <Dialog
