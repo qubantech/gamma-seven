@@ -17,6 +17,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ManagermodalLayout from '../../app.module/app.layouts/managermodal.layout/managermodal.layout';
 import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import ChartrequestsModule from '../chartrequests.module/chartrequests.module';
 
 let drawerWidth = 480;
 
@@ -176,7 +177,8 @@ const ManagerProfileModule = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
+                <ChartrequestsModule/>
+                {/*<List>
                     {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>
@@ -185,7 +187,7 @@ const ManagerProfileModule = () => {
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}
-                </List>
+                </List>*/}
                 <Divider />
                 <List>
                     {['All mail', 'Trash', 'Spam'].map((text, index) => (
