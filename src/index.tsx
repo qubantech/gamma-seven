@@ -15,7 +15,7 @@ const theme = createTheme({
         primary: {
             // main: "#f4aa97",
             // main: "#E4AEC5",
-            main: "#007AFE",
+            main: "#0e73e8",
         },
         secondary: {
             main: "#EEF6FF",
@@ -23,7 +23,7 @@ const theme = createTheme({
     },
 });
 
-export const PRIMARY_COLOR = "#007AFE";
+export const PRIMARY_COLOR = "#0e73e8";
 export const SECONDARY_COLOR = "#EEF6FF";
 export const COMPLIANT_CARD_COLOR = "#EEF6FF";
 
