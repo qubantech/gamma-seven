@@ -84,12 +84,14 @@ const Profile = () => {
         <div>
             <Container>
             <ExpandCardLayout onClick={() => {}}
-                              title={userdata.watchedObject?.firstName && <Typography m={0} p={0} variant={"body1"}>{userdata.watchedObject?.firstName}</Typography> || <div></div>}
-                              subtitle={userdata.watchedObject?.lastName && <Typography m={0} p={0} variant={"subtitle2"}>{userdata.watchedObject?.lastName}</Typography> || <div></div>}
+                              title={userdata.watchedObject?.firstName &&
+                                  <Typography m={0} p={0} variant={"body1"}>{userdata.watchedObject?.firstName}</Typography> || <div></div>}
+                              subtitle={userdata.watchedObject?.lastName &&
+                                  <Typography m={0} p={0} variant={"subtitle2"}>{userdata.watchedObject?.lastName}</Typography> || <div></div>}
                               righttext={""}
                               description={description()}
             />
-            <Tabs variant={"fullWidth"} value={value} onChange={handleChange}>
+            <Tabs sx={{paddingTop: "10px", paddingBottom: "10px"}} variant={"fullWidth"} value={value} onChange={handleChange}>
                 <Tab icon={<HourglassBottomIcon/>} iconPosition="start" label={"В работе"}/>
                 <Tab icon={<CheckIcon/>} iconPosition="start" label={"Завершенные"}/>
             </Tabs>

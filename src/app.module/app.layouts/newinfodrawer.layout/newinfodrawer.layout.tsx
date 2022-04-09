@@ -4,13 +4,49 @@ import Typography from '@mui/material/Typography';
 import facilities from '../../../modules/map.module/components/facilities.json';
 import React from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { useState } from 'react';
 
+type newReportInterface = {
+    theme: string
+    institutionID: number,
+    tags: Array<String>,
+    text: string,
+    userID: string,
+}
 
 const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                               {isOpen: boolean, onChangeState: (b:boolean) => void, uid: string, height?: string}) => {
+    const newReportInit:newReportInterface = {
+        theme: "",
+        institutionID: 0,
+        tags: new Array<String>(),
+        text: "",
+        userID: ""
+    }
+    const [formData, setFormData] = useState<newReportInterface>(newReportInit)
+
+    const handleChange = (event:any) => {
+        console.log(event)
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+        console.log(formData)
+    }
+
+    const handleChangeAutoComplete1 = (event:any, value:any) => {
+        setFormData({...formData, tags: value})
+        console.log(formData)
+    }
+
+    const handleChangeAutoComplete2 = (event:any, value:any) => {
+        console.log(value)
+        setFormData({...formData, institutionID: Number(value.id)})
+        console.log(formData)
+    }
+
 
     const lists = [{title:"type1", value:1}, {title:"type2", value:2}]
-
     return (
         <DrawerLayout
             isOpen={isOpen}
@@ -33,8 +69,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                                     placeholder="Выберите больницу"
                                 />
                             }
-                            onChange={(event: any, value: any) => {
-                            }}
+                            onChange={handleChangeAutoComplete2}
                         />
                         <IconButton color={ "primary" } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: "1px solid #f4aa97"}}>
                             <LocationOnIcon fontSize={"large"}/>
@@ -46,6 +81,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                         options={lists}
                         getOptionLabel={(option) => option.title}
                         defaultValue={[lists[0]]}
+                        onChange={handleChangeAutoComplete1}
                         renderInput={(params) => (
                             <TextField
                                 {...params}
@@ -56,20 +92,23 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                         )}
                     />
                     <Stack spacing={0} alignItems={"center"}>
-                        <Button fullWidth variant="contained" component="span">
+                        <Button fullWidth variant="outlined" component="span">
                             Загрузить вложения
                         </Button>
-                        <Typography variant={"subtitle2"}>5 вложений размеров до 10Мб</Typography>
+                        <Typography variant={"caption"}>5 вложений размеров до 10Мб</Typography>
                     </Stack>
-                    <Typography variant={"h5"}>Название</Typography>
-                    <Typography variant={"h6"}>Учреждение</Typography>
-                    <Stack py={"10px"} direction={"row"} alignItems={"flex-end"} spacing={1}>
-                        <Chip label="tag1" color="default" />
-                        <Chip label="tag2" color="default" />
-                    </Stack>
-                    <Typography variant={"body1"}>
-                        Text idfu c uifdhmj ydgchvv jkhjdnbyhjyhyk jnjh hky hb gh dgfhjg fi uly ty uyh u c gr hdghj hgf hj yf hot fyhj
-                    </Typography>
+                    <TextField
+                        id="description"
+                        label="Описание проблемы"
+                        multiline
+                        name={"text"}
+                        onChange={handleChange}
+                        rows={10}
+                        variant="standard"
+                    />
+                    <Button variant={"contained"} >
+                         Отправить жалобу
+                    </Button>
                 </Stack>}
         />
     )
