@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { auth } from './app.configs';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -12,6 +12,8 @@ import { useWatchedObject } from "./app.services/app.realtimedb.service";
 import { RTDB } from "./app.resources/app.resouces.realtimedb";
 
 import { useUser } from './app.services/app.user.service';
+import { appAuditService } from './app.services/app.audit.service';
+import { ReportModel } from './app.services/app.audit.service/models/report.model';
 
 export const RouterRoot = () => {
     return <BrowserRouter>
@@ -46,9 +48,37 @@ const App = () => {
     const userdata = useUser(user?.uid || "0")
     const navigate = useNavigate()
 
+    const [reports, setReports] = useState<Array<ReportModel>>();
+
     useEffect(() => {
         setWatchedObject('Этот 1111текст отпавляется в базу и возвращается обратно');
-    }, [])
+
+        // appAuditService.getAllReports()
+        //     .then(result => {
+        //         console.log(result)
+        //     })
+        //     .catch(error => console.log(error));
+
+        // appAuditService.createReportForUser({
+        //     dateStart: "05-Aug-2010",
+        //     dateEnd: "05-Dec-2017"
+        // }, "6251e15151f2eeeb962a3507")
+        //     .then(result => {
+        //         console.log(result)
+        //     })
+        //     .catch(error => console.log(error));
+        //
+
+        // appAuditService.getReportPDFAndSendToEmail("6251e15151f2eeeb962a3507",
+        //     "wlashcontact@gmail.com")
+        //         .then(result => {
+        //             console.log(result)
+        //         })
+        //         .catch(error => console.log(error));
+
+        window.open('http://localhost:6868/report/pdf/62520ab5e50d6652ec57c527')
+
+        }, [])
 
     useEffect(() => {
         console.log(userdata)
@@ -56,6 +86,7 @@ const App = () => {
             if (userdata.watchedObject?.role == "manager") navigate("/managerprofile")
             else navigate("/welcome")
         }
+
     },[userdata])
 
 
