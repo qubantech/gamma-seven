@@ -92,7 +92,7 @@ const App = () => {
 
     return (
         <>
-            <div>
+            {/*<div>
                 Realtime db demo
                 <p>
                     {watchedObject && <strong>Объект в базе: {watchedObject}</strong>}
@@ -110,7 +110,7 @@ const App = () => {
                         )
                     }
                 </ul>
-            </header>
+            </header>*/}
             {
                 error
                 && <ServerError/>
