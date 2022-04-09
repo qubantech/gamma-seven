@@ -21,6 +21,7 @@ import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ExpandCardLayout from '../../../app.module/app.layouts/expand-card.layout/expand-card.layout';
+import ChartrequestsModule from '../../chartrequests.module/chartrequests.module';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -95,19 +96,36 @@ export const Report: FC<AuditStat> = ({
                     </Paper>
                 </Stack>
                 <Stack mb={"15px"} >
-                    <ExpandCardLayout subtitle={<div/>} title={<Typography variant={"h6"} align={"center"}>Средняя осмысленность: 0.43</Typography>}
-                                      description={
-                                        <div>
-                                            <Typography align={"center"} pb={"10px"}>Популярные ключевые слова:</Typography>
-                                            <Grid spacing={2}>
-                                            {["words", "wods", "wcdju"].map((el) => {
-                                                return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
-                                            })}
-                                            </Grid>
-                                        </div>}/>
+                    <ExpandCardLayout subtitle={<div/>} title={
+                        <div>
+                        <Typography variant={"h6"} align={"center"}>Средняя осмысленность: 0.43</Typography>
+                                <Typography py={"10px"} align={"center"}>Популярные ключевые слова:</Typography>
+                                <Grid spacing={2}>
+                                    {["words", "wods", "wcdju"].map((el) => {
+                                        return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
+                                    })}
+                                </Grid>
+                        </div>
+                    } description={
+                        <div>
+                            <Typography align={"center"} py={"10px"}>Популярные темы:</Typography>
+                            <Grid spacing={2} pb={"10px"}>
+                                {["words", "wods", "wcdju"].map((el) => {
+                                    return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
+                                })}
+                            </Grid>
+                            <Typography align={"center"} py={"10px"}>Популярные сценарии:</Typography>
+                            <Grid spacing={2}>
+                                {["words", "wods", "wcdju"].map((el) => {
+                                    return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
+                                })}
+                            </Grid>
+                        </div>
+                    }/>
+
                 </Stack>
                     <Stack mb={"15px"} >
-                    <ExpandCardLayout subtitle={<div/>} title={<Typography variant={"h6"} align={"center"}>График</Typography>}
+                    <ExpandCardLayout subtitle={<div/>} title={<ChartrequestsModule/>}
                                       description={
                                           <div>
                                               Eще график
