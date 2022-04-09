@@ -71,10 +71,13 @@ const Profile = () => {
     const tabsContent = () => (
         <>
             <TabPanel value={value} index={0}>
-                <ComplaintCardLayout title={"Ненавижу боddddddлницы"} date={"2 дня"} number={228} onClick={() => setIdDrawer("1")}/>
+                <ComplaintCardLayout title={"Nam vitae iaculis leo. Nunc aliquet hendrerit hendrerit."} date={"4 дня"} number={82} onClick={() => setIdDrawer("1")}/>
             </TabPanel>
             <TabPanel value={value} index={1}>
-                sas
+                <div style={{marginBottom: '1em'}}>
+                <ComplaintCardLayout title={"Fusce lobortis lorem nec enim dapibus pellentesque."} date={"4 дня"} number={55} onClick={() => setIdDrawer("1")}/>
+                </div>
+                <ComplaintCardLayout title={"Pellentesque id ligula sem."} date={"15 дней"} number={12} onClick={() => setIdDrawer("1")}/>
             </TabPanel>
         </>
     )

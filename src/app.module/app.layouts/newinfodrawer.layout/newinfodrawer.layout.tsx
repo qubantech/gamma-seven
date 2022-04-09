@@ -54,7 +54,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
             height={height && height || "auto"}
             children={
                 <Stack spacing={2}>
-                    <TextField id="Title" label="Тема" variant="standard" />
+                    <TextField id="Title" label="Тема" variant="standard" style={{marginTop: '1.1em'}}/>
                     <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
                         <Autocomplete
                             sx={{width: "100%"}}
@@ -91,11 +91,11 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                             />
                         )}
                     />
-                    <Stack spacing={0} alignItems={"center"}>
+                    <Stack spacing={0} alignItems={"center"} style={{marginTop: '1.2em'}}>
                         <Button fullWidth variant="outlined" component="span">
                             Загрузить вложения
                         </Button>
-                        <Typography variant={"caption"}>5 вложений размеров до 10Мб</Typography>
+                        <Typography variant={"caption"} style={{marginTop: '0.5em'}}>5 вложений размеров до 10Мб</Typography>
                     </Stack>
                     <TextField
                         id="description"
@@ -106,7 +106,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                         rows={10}
                         variant="standard"
                     />
-                    <Button variant={"contained"} >
+                    <Button variant={"contained"} style={{marginBottom: '1.1em'}} >
                          Отправить жалобу
                     </Button>
                 </Stack>}
