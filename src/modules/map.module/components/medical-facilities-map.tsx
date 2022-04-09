@@ -1,14 +1,16 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { YMaps, Map, Placemark } from 'react-yandex-maps';
 import { DrawerLayout } from '../../../app.module/app.layouts/drawer.layout/drawer.layout';
 import { FacilityContent } from './facility-content';
 import ObjectManagerContainer from './object-manager-container';
+import InfodrawerLayout from '../../../app.module/app.layouts/infodrawer.layout/infodrawer.layout';
 
 interface MedicalFacilitiesMapProps {
     facilities: any,
     mapState: any,
     userCoordinates: boolean,
 }
+
 
 export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
     ({
@@ -18,13 +20,15 @@ export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
      }) => {
 
     const [selectedPoint, setSelectedPoint] = useState( facilities.features[0] );
-    const [drawerState, setDrawerState] = useState(false);
+    const [pointDrawerState, setPointDrawerState] = useState(false);
 
     const onPlacemarkClick = (point: any) => {
         setSelectedPoint(point);
-        setDrawerState(true);
+        setPointDrawerState(true);
         console.log(point)
     };
+
+        const [idDrawer, setIdDrawer] = useState("")
 
         return (
         <>
@@ -43,10 +47,14 @@ export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
                 </Map>
             </YMaps>
             <DrawerLayout
-                isOpen={ drawerState }
-                onChangeState={ setDrawerState }
-                children={ <FacilityContent title={ selectedPoint.properties.title } /> }
+                isOpen={ pointDrawerState }
+                onChangeState={ setPointDrawerState }
+                children={ <FacilityContent title={ selectedPoint.properties.title } onClick={ () => setIdDrawer("1") }/> }
             />
+            <InfodrawerLayout
+                isOpen={ idDrawer && true || false }
+                onChangeState={ (b:boolean)=>{if (!b) setIdDrawer("") } }
+                info={ idDrawer }/>
         </>
 
     );

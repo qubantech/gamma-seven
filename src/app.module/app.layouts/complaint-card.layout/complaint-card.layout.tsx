@@ -1,5 +1,5 @@
 import Card from '@mui/material/Card';
-import { Box, CardActionArea, Grid, Stack } from '@mui/material';
+import { CardActionArea, Stack } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import * as React from 'react'
@@ -11,11 +11,11 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                                { onClick?: () => void, title: string, badge?: JSX.Element, date?: string, number:number}) => {
 
     return(
-        <Card sx={{width: "100%"}}>
+        <Card sx={{width: "100%", backgroundColor: "rgba(244,170,151,0.3)", boxShadow: "0px 3px 3px darkGrey"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
                             action={
-                            <IconButton sx={{transform: 'rotate(270deg)' , marginLeft: "auto", width: "50px", height: "50px"}}>
+                            <IconButton sx={{transform: 'rotate(90deg)' , marginLeft: "auto", width: "50px", height: "50px"}}>
                                 <ChevronRightIcon />
                             </IconButton>
                             }

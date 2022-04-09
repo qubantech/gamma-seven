@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import { MobileLayout } from '../../app.module/app.layouts';
 import AddIcon from '@mui/icons-material/Add';
-import { blue, red } from '@mui/material/colors';
-import MapIcon from '@mui/icons-material/Map';
-import PersonIcon from '@mui/icons-material/Person';
-import { menuItem } from '../../app.module/app';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.module/app.configs';
 import { useUser } from '../../app.module/app.services/app.user.service';
-import Card from '@mui/material/Card';
-import { Box, CardActionArea, Container, Tab, Tabs } from '@mui/material';
+import { Box, Container, Tab, Tabs } from '@mui/material';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandCardLayout from '../../app.module/app.layouts/expand-card.layout/expand-card.layout';
@@ -90,7 +85,6 @@ const Profile = () => {
                 {tabsContent()}
             <MobileLayout
                 centerIcon={<AddIcon />}
-                centerColor={blue[700]}
                 activeItem={2}
                 menuItems={
                     menuItems()

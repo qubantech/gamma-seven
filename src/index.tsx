@@ -9,18 +9,18 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './index.css'
 import {createTheme, ThemeProvider} from "@mui/material";
-import { blue, pink, red } from '@mui/material/colors';
 
 const theme = createTheme({
     palette: {
         primary: {
-            main: red[900],
+            main: "#f4aa97",
         },
         secondary: {
-            main: pink[800],
+            main: "#f17ac0",
         }
     },
 });
+
 
 
 ReactDOM.render(
