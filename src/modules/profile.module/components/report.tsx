@@ -1,25 +1,17 @@
 import React, { FC } from 'react';
 import {
-    AppBar,
     Button,
-    Container,
-    Dialog,
-    Grid,
-    IconButton,
     Paper,
     Slide,
     Stack,
-    Toolbar,
     Typography,
 } from '@mui/material';
 import { TransitionProps } from '@mui/material/transitions';
 
-import CloseIcon from '@mui/icons-material/Close';
 import { AuditStat } from '../../../app.module/app.models/models';
 
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
-import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -61,7 +53,7 @@ export const Report: FC<AuditStat> = ({
 
     return (
         <div style={{ padding: "10px" }}>
-            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
+            <Button fullWidth color={ "primary" } variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
             <Stack spacing={2} justifyContent={ "space-evenly" } >
                 <Stack direction={ "row" } spacing={2} justifyContent={ "space-evenly" } >
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden" }}>
@@ -70,13 +62,13 @@ export const Report: FC<AuditStat> = ({
                         <Typography variant={ "body2" } >В процессе: { complaintsPending }</Typography>
                         <Typography variant={ "body2" } >Отказано: { complaintsRejected }</Typography>
                         {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
-                        <DescriptionTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                        <DescriptionTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
 
                     </Paper>
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden" }}>
                         <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ maxComplaintProcessingTime } мин.</b></Typography>
-                        <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
-                        <AccessTimeTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                        <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Среднее время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
+                        <AccessTimeTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                     </Paper>
                 </Stack>
                 <Stack >

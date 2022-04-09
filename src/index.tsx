@@ -14,15 +14,18 @@ const theme = createTheme({
     palette: {
         primary: {
             // main: "#f4aa97",
-            main: "#E4AEC5",
+            // main: "#E4AEC5",
+            main: "#007AFE",
         },
         secondary: {
-            main: "#FAD9E6",
+            main: "#EEF6FF",
         }
     },
 });
 
-
+export const PRIMARY_COLOR = "#007AFE";
+export const SECONDARY_COLOR = "#EEF6FF";
+export const COMPLIANT_CARD_COLOR = "#EEF6FF";
 
 ReactDOM.render(
     <React.StrictMode>

@@ -10,7 +10,7 @@ const ObjectManagerContainer = ({facilities, onPlacemarkClick}) => {
                     gridSize: 100,
                 }}
                 clusters={{
-                    preset: 'islands#pinkClusterIcons',
+                    preset: 'islands#blueClusterIcons',
                 }}
                 features={ facilities }
                 instanceRef={ref =>

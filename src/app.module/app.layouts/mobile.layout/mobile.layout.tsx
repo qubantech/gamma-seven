@@ -7,6 +7,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import NewinfoDrawer from '../newinfodrawer.layout/newinfodrawer.layout';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.configs';
+import { PRIMARY_COLOR } from '../../../index';
 
 export const menuItems = () => [
     menuItem(<MapIcon />, "Карта", "/map"),
@@ -39,7 +40,7 @@ export function MobileLayout ({centerIcon, centerColor, menuItems, activeItem=-1
                                                                height: 77,
                                                                marginBottom: "5px",
                                                                right:"50% - 35px",
-                                                               backgroundColor: "#f17ac0"
+                                                               backgroundColor: PRIMARY_COLOR
                                                            }}
                                                            value={1}
                                                            onClick={() => setIsOpenNewDrawer(true)}

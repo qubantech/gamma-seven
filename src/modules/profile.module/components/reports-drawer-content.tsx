@@ -15,7 +15,7 @@ const ReportsDrawerContent = () => {
                 isReportList &&
                 (
                     <>
-                        <Button fullWidth variant={ "outlined" } sx={{ mt: "10px", mb: "20px" }}>Создать отчет</Button>
+                        <Button fullWidth color={ "primary" } variant={ "outlined" } sx={{ mt: "10px", mb: "20px" }}>Создать отчет</Button>
                         <ReportsList />
                     </>
                 )

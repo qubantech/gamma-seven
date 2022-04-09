@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.module/app.configs';
 import { useUser } from '../../app.module/app.services/app.user.service';
-import { Box, Button, Container, Tab, Tabs } from '@mui/material';
+import { Box, Container, Tab, Tabs } from '@mui/material';
 import HourglassBottomIcon from '@mui/icons-material/HourglassBottom';
 import CheckIcon from '@mui/icons-material/Check';
 import ExpandCardLayout from '../../app.module/app.layouts/expand-card.layout/expand-card.layout';
@@ -126,8 +126,8 @@ const Profile = () => {
                 />
 
 
-                <Tabs sx={{paddingTop: "10px", paddingBottom: "10px"}} variant={"fullWidth"} value={value} onChange={handleChange}>
-                    <Tab icon={<HourglassBottomIcon/>} iconPosition="start" label={"В работе"}/>
+                <Tabs textColor={ "primary" } indicatorColor={ 'primary' } sx={{paddingTop: "10px", paddingBottom: "10px"}} variant={"fullWidth"} value={value} onChange={handleChange}>
+                    <Tab  icon={<HourglassBottomIcon/>} iconPosition="start" label={"В работе"}/>
                     <Tab icon={<CheckIcon/>} iconPosition="start" label={"Завершенные"}/>
                 </Tabs>
                     {tabsContent()}
