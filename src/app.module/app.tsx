@@ -54,7 +54,7 @@ const App = () => {
         console.log(userdata)
         if (!loading && userdata.watchedObject) {
             if (userdata.watchedObject?.role == "manager") navigate("/managerprofile")
-            else navigate("/profile")
+            else navigate("/welcome")
         }
     },[userdata])
 

@@ -7,6 +7,11 @@ import React, {useState} from "react";
 import {Button, Container, Stack} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import "./welcome.css"
+//@ts-ignore
+import welcome1 from "./welcome.resources/welcome1.png"
+//@ts-ignore
+import welcome2 from "./welcome.resources/welcome2.png"
+import Typography from '@mui/material/Typography';
 
 
 const WelcomeModule = () => {
@@ -21,23 +26,27 @@ const WelcomeModule = () => {
     const slides = [
         //менять высоту через css(!)
         <Container sx={{position:"relative"}} className={"height-nav"}>
-            <img style={{height:"80vh", width:"100%"}} src='https://media-cldnry.s-nbcnews.com/image/upload/rockcms/2022-04/martha-stewart-cat-kb-2x1-220404-629e1f.jpg'/>
-            <Stack spacing={2} sx={{position:"absolute", bottom:"25px", left:"0px", right:"0px"}}>
-                <Button variant={"contained"} fullWidth onClick={() => prepend()}>Далее</Button>
-                <Button variant={"contained"} fullWidth onClick={() => navigate("/profile")}>
+            <img style={{ width:"100%"}} src={welcome1}/>
+            <Typography align={"center"} variant={"h6"}>Посредством нашего сервиса Вы сможете помочь улучшить медицину для каждого. </Typography>
+            <Stack sx={{position:"absolute", bottom:"25px", left:"0px", right:"0px"}}>
+                <Button sx={{marginX:"15px", marginBottom:"10px"}} variant={"contained"} onClick={() => prepend()}>Далее</Button>
+                <Button sx={{marginX:"15px"}} variant={"contained"} onClick={() => navigate("/profile")}>
                     Пропустить
                 </Button>
             </Stack>
         </Container>,
 
         <Container sx={{position:"relative"}} className={"height-nav"}>
-            <Container sx={{position:"absolute", bottom:"60px", left:"0px", right:"0px"}}>
-                <Button onClick={() => prepend()}>Далее</Button>
-                <Button onClick={() => navigate("/profile")}>
+            <img style={{paddingTop:"100px", width:"100%"}} src={welcome2}/>
+            <Typography align={"center"} variant={"h6"}>В основе нашей работы роботизированный алгоритм, который позволяет ускорить обработку данных в 2 раза*</Typography>
+            <Typography sx={{width:"100%"}} align={"center"} variant={"caption"}>*на основе внутренних исследований</Typography>
+            <Stack sx={{position:"absolute", bottom:"25px", left:"0px", right:"0px"}}>
+                <Button sx={{marginX:"15px", marginBottom:"10px"}} variant={"contained"} onClick={() => prepend()}>Далее</Button>
+                <Button sx={{marginX:"15px"}} variant={"contained"} onClick={() => navigate("/profile")}>
                     Пропустить
                 </Button>
-            </Container>
-        </Container>
+            </Stack>
+        </Container>,
     ]
 
     return(
