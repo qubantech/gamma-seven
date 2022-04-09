@@ -1,12 +1,16 @@
 import { DrawerLayout } from '../drawer.layout/drawer.layout';
-import { Autocomplete, Button, Chip, Stack, TextField } from '@mui/material';
+import { Autocomplete, Button, Chip, IconButton, Stack, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
+import facilities from '../../../modules/map.module/components/facilities.json';
+import React from 'react';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 
 const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                               {isOpen: boolean, onChangeState: (b:boolean) => void, uid: string, height?: string}) => {
 
     const lists = [{title:"type1", value:1}, {title:"type2", value:2}]
+
     return (
         <DrawerLayout
             isOpen={isOpen}
@@ -15,6 +19,27 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
             children={
                 <Stack spacing={2}>
                     <TextField id="Title" label="Тема" variant="standard" />
+                    <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
+                        <Autocomplete
+                            sx={{width: "100%"}}
+                            options={facilities.features}
+                            defaultValue={null}
+                            getOptionLabel={ (option) => option.properties.title }
+                            renderInput={(params) =>
+                                <TextField
+                                    {...params}
+                                    variant="standard"
+                                    label="Больница"
+                                    placeholder="Выберите больницу"
+                                />
+                            }
+                            onChange={(event: any, value: any) => {
+                            }}
+                        />
+                        <IconButton color={ "primary" } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: "1px solid #f4aa97"}}>
+                            <LocationOnIcon fontSize={"large"}/>
+                        </IconButton>
+                    </Stack>
                     <Autocomplete
                         multiple
                         id="tags-standard"

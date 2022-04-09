@@ -6,15 +6,13 @@ import { MobileLayout } from '../../app.module/app.layouts';
 
 import facilities from './components/facilities.json';
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
-import { Autocomplete, Container, Grid, IconButton, TextField } from '@mui/material';
+import { Autocomplete, Container, IconButton, Stack, TextField } from '@mui/material';
 
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const MapPage = () => {
     const [mapState, setMapState] = useState({center: [45.0360, 38.9746], zoom: 12});
     const [userCoordinates, setUserCoordinates] = useState(false);
-    const [currentFacility, setCurrentFacility] = useState(facilities.features[0]);
-
 
     const onGeopositionClick = () => {
         if (!navigator.geolocation) {
@@ -44,26 +42,29 @@ const MapPage = () => {
                 borderRadius: "0 0 30px 30px",
                 width: "100vw",
             }}>
-                <Grid container spacing={1} >
-                    <Grid item xs={10} >
-                        <Autocomplete
-                            sx={{marginTop: "30px", marginBottom: "30px"}}
-                            options={facilities.features}
-                            value={currentFacility}
-                            getOptionLabel={ (option) => option.properties.title }
-                            renderInput={(params) => <TextField {...params} label="Больница" />}
-                            onChange={(event: any, value: any) => {
-                                setCurrentFacility(value);
-                                setMapState({ center: value.geometry.coordinates, zoom: 15 })
-                            }}
-                        />
-                    </Grid>
-                    <Grid item xs={2} >
-                        <IconButton color={ "primary" } onClick={ onGeopositionClick } sx={{marginTop: "30px", marginBottom: "30px"}}>
-                            <LocationOnIcon fontSize={"large"}/>
-                        </IconButton>
-                    </Grid>
-                </Grid>
+
+                <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
+                    <Autocomplete
+                        sx={{ marginTop: "30px", marginBottom: "30px", width: "100%" }}
+                        options={ facilities.features }
+                        defaultValue={ null }
+                        getOptionLabel={ (option) => option.properties.title }
+                        renderInput={(params) =>
+                            <TextField
+                                {...params}
+                                variant="standard"
+                                label="Больница"
+                                placeholder="Выберите больницу"
+                            />
+                        }
+                        onChange={(event: any, value: any) => {
+                            setMapState({ center: value.geometry.coordinates, zoom: 15 })
+                        }}
+                    />
+                    <IconButton color={ "primary" } onClick={ onGeopositionClick } sx={{marginTop: "20px", marginBottom: "20px", borderRadius: "100%", border: "1px solid #f4aa97"}}>
+                        <LocationOnIcon fontSize={"large"}/>
+                    </IconButton>
+                </Stack>
             </Container>
             <MedicalFacilitiesMap facilities={ facilities } mapState={ mapState } userCoordinates={ userCoordinates }/>
             <MobileLayout
