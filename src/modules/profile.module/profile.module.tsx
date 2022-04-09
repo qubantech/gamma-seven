@@ -12,7 +12,8 @@ import Typography from '@mui/material/Typography';
 import ComplaintCardLayout from '../../app.module/app.layouts/complaint-card.layout/complaint-card.layout';
 import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/infodrawer.layout';
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
-import axios from 'axios';
+//@ts-ignore
+import zdhoo from "./img_avatar.png"
 import { auditService } from '../../app.module/app.services/app.auditstat.service';
 
 
@@ -110,10 +111,11 @@ const Profile = () => {
         <div>
             <Container>
             <ExpandCardLayout onClick={() => {logout()}}
+                              avatar={zdhoo}
                               title={userdata.watchedObject?.firstName &&
-                                  <Typography m={0} p={0} variant={"body1"}>{userdata.watchedObject?.firstName}</Typography> || <div></div>}
+                                  <Typography m={0} p={0} variant={"h5"}>{userdata.watchedObject?.firstName}</Typography> || <div></div>}
                               subtitle={userdata.watchedObject?.lastName &&
-                                  <Typography m={0} p={0} variant={"subtitle2"}>{userdata.watchedObject?.lastName}</Typography> || <div></div>}
+                                  <Typography m={0} p={0} variant={"body1"}>{userdata.watchedObject?.lastName}</Typography> || <div></div>}
                               righttext={""}
                               description={description()}
 

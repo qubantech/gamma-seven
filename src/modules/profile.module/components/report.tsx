@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import {
     AppBar,
-    Button,
+    Button, Chip,
     Container,
     Dialog,
     Grid,
@@ -20,6 +20,7 @@ import { AuditStat } from '../../../app.module/app.models/models';
 import DescriptionTwoToneIcon from '@mui/icons-material/DescriptionTwoTone';
 import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import ExpandCardLayout from '../../../app.module/app.layouts/expand-card.layout/expand-card.layout';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -35,7 +36,6 @@ const gridBlockStyle = {
     // width: "100%",
     width: "135px",
     height: "120px",
-    padding: "15px",
     boxShadow: "0px 10px 15px darkGrey",
     // backgroundColor: "rgba(244,170,151,0.3)",
     // border: "1px solid black",
@@ -62,33 +62,61 @@ export const Report: FC<AuditStat> = ({
     return (
         <div style={{ padding: "10px" }}>
             <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
-            <Stack spacing={2} justifyContent={ "space-evenly" } >
-                <Stack direction={ "row" } spacing={2} justifyContent={ "space-evenly" } >
-                    <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden" }}>
-                        <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { complaintsAmount }</Typography>
-                        <Typography variant={ "body2" } >Рассмотрено: { complaintsProcessed }</Typography>
-                        <Typography variant={ "body2" } >В процессе: { complaintsPending }</Typography>
-                        <Typography variant={ "body2" } >Отказано: { complaintsRejected }</Typography>
-                        {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
-                        <DescriptionTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
-
+            {/*<Stack spacing={2} justifyContent={ "space-evenly" } >*/}
+                <Grid mb={"15px"} container direction={ "row" } spacing={2} columns={12} >
+                    <Grid item xs={6}>
+                    <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
+                        <div style={{padding:"15px"}}>
+                            <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { complaintsAmount }</Typography>
+                            <Typography variant={ "body2" } >Рассмотрено: { complaintsProcessed }</Typography>
+                            <Typography variant={ "body2" } >В процессе: { complaintsPending }</Typography>
+                            <Typography variant={ "body2" } >Отказано: { complaintsRejected }</Typography>
+                            {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
+                            <DescriptionTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                        </div>
                     </Paper>
-                    <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden" }}>
-                        <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ maxComplaintProcessingTime } мин.</b></Typography>
-                        <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
-                        <AccessTimeTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                    </Grid>
+                    <Grid item xs={6}>
+                    <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
+                        <div style={{padding:"15px"}}>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ maxComplaintProcessingTime } мин.</b></Typography>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
+                            <AccessTimeTwoToneIcon color={ "secondary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
+                        </div>
+                    </Paper>
+                    </Grid>
+                </Grid>
+                <Stack mb={"15px"}  >
+                    <Paper sx={{textAlign: "center", boxShadow: "0px 10px 15px darkGrey",}}>
+                        <div style={{padding:"15px"}}>
+                            <Typography variant={ "subtitle1" }>Самое популярное слово:</Typography>
+                            <Typography variant={ "h6" }>{ mostPopularKeywords[0] }</Typography>
+                        </div>
                     </Paper>
                 </Stack>
-                <Stack >
-                    <Paper sx={{ padding: "15px", textAlign: "center", boxShadow: "0px 10px 15px darkGrey",}}>
-                        <Typography variant={ "subtitle1" }>Самое популярное слово:</Typography>
-                        <Typography variant={ "h6" }>{ mostPopularKeywords[0] }</Typography>
-                    </Paper>
+                <Stack mb={"15px"} >
+                    <ExpandCardLayout subtitle={<div/>} title={<Typography variant={"h6"} align={"center"}>Средняя осмысленность: 0.43</Typography>}
+                                      description={
+                                        <div>
+                                            <Typography align={"center"} pb={"10px"}>Популярные ключевые слова:</Typography>
+                                            <Grid spacing={2}>
+                                            {["words", "wods", "wcdju"].map((el) => {
+                                                return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
+                                            })}
+                                            </Grid>
+                                        </div>}/>
+                </Stack>
+                    <Stack mb={"15px"} >
+                    <ExpandCardLayout subtitle={<div/>} title={<Typography variant={"h6"} align={"center"}>График</Typography>}
+                                      description={
+                                          <div>
+                                              Eще график
+                                          </div>}/>
                 </Stack>
 
 
 
-            </Stack>
+           {/* </Stack>*/}
         </div>
     );
 };
