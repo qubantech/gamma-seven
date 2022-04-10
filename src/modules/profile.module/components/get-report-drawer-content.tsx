@@ -26,10 +26,11 @@ const GetReportDrawerContent = (props: {id: string}) => {
     }
 
     return (
-        <Container sx={{ minHeight: "50vh" }}>
-            <FormGroup>
+        <Container sx={{ minHeight: "10vh" }}>
+            <FormGroup sx={{ mt: "20px" }}>
                 <FormControlLabel control={
                     <Checkbox
+
                         checked={checked}
                         onChange={handleChange}
                         inputProps={{ 'aria-label': 'controlled' }}
@@ -39,13 +40,12 @@ const GetReportDrawerContent = (props: {id: string}) => {
 
             {
                 checked &&
-                    <TextField label="E-mail" variant="standard" placeholder={ "example@example.com" } onChange={ onEmailChange }/>
-                    && <Button fullWidth onClick={ onClick }>Скачать и отправить</Button>
-
-                || <Button fullWidth onClick={ onClick }>Скачать</Button>
+                <>
+                    <TextField type={"email"} fullWidth sx={{ }}label="E-mail" variant="standard" placeholder={ "example@example.com" } onChange={ onEmailChange }/>
+                    <Button variant={ "outlined" } fullWidth onClick={ onClick } sx={{ mt: "40px" }}>Скачать и отправить</Button>
+                </>
+                || <Button variant={ "outlined" } fullWidth onClick={ onClick }>Скачать</Button>
             }
-
-            <Button>Скачать</Button>
         </Container>
     );
 };
