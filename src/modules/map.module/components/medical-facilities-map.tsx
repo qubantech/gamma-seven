@@ -4,6 +4,9 @@ import { DrawerLayout } from '../../../app.module/app.layouts/drawer.layout/draw
 import { FacilityContent } from './facility-content';
 import ObjectManagerContainer from './object-manager-container';
 import InfodrawerLayout from '../../../app.module/app.layouts/infodrawer.layout/infodrawer.layout';
+import {
+    complaintsModelInitState
+} from '../../../app.module/app.services/app.complaints.service/models/complaints.model';
 
 interface MedicalFacilitiesMapProps {
     facilities: any,
@@ -54,7 +57,7 @@ export const MedicalFacilitiesMap: FC<MedicalFacilitiesMapProps> =
             <InfodrawerLayout
                 isOpen={ idDrawer && true || false }
                 onChangeState={ (b:boolean)=>{if (!b) setIdDrawer("") } }
-                info={ idDrawer }/>
+                info={ complaintsModelInitState }/>
         </>
 
     );

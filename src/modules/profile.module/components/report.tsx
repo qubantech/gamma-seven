@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import {
     AppBar,
     Button, Chip,
@@ -22,6 +22,10 @@ import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ExpandCardLayout from '../../../app.module/app.layouts/expand-card.layout/expand-card.layout';
 import ChartrequestsModule from '../../chartrequests.module/chartrequests.module';
 import { appAuditService } from '../../../app.module/app.services/app.audit.service';
+import {
+    ReportModel,
+    ReportModelInitState,
+} from '../../../app.module/app.services/app.audit.service/models/report.model';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -43,45 +47,31 @@ const gridBlockStyle = {
 
 }
 
-export const Report: FC<AuditStat> = ({
-    complaintsAmount,
-    complaintsAmountPerDayHist,
-    complaintsMeaningfulnessMeanScore,
-    complaintsPending,
-    complaintsProcessed,
-    complaintsRejected,
-    createdAt,
-    maxComplaintProcessingTime,
-    meanComplaintProcessingTime,
-    mostPopularKeywords,
-    mostPopularScripts,
-    mostPopularTopics,
-    peakComplaintsAmountDate,
-    peakComplaintsAmountNumber
-}) => {
+export const Report = () => {
 
-    const onDownloadClick = () => {
-        appAuditService.getReportPDFAndSendToEmail("6251e15151f2eeeb962a3507",
-            "wlashcontact@gmail.com")
-                .then(result => {
-                    console.log(result)
-                    // window.open('http://https://audit.quban.tech/report/pdf/62520ab5e50d6652ec57c527')
-                })
-                .catch(error => console.log(error));
-    }
+    const [reports, setReports] = useState<ReportModel>(ReportModelInitState)
+
+    useEffect(() => {
+        appAuditService.getAllReports()
+            .then(result => {
+                setReports(result)
+                console.log(result)
+            })
+            .catch(error => console.log(error));
+    }, [])
 
     return (
         <div style={{ padding: "10px" }}>
-            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} onClick={ onDownloadClick }>Скачать отчет</Button>
+            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
             {/*<Stack spacing={2} justifyContent={ "space-evenly" } >*/}
                 <Grid mb={"15px"} container direction={ "row" } spacing={2} columns={12} >
                     <Grid item xs={6}>
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
                         <div style={{padding:"15px"}}>
-                            <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { complaintsAmount }</Typography>
-                            <Typography variant={ "body2" } >Рассмотрено: { complaintsProcessed }</Typography>
-                            <Typography variant={ "body2" } >В процессе: { complaintsPending }</Typography>
-                            <Typography variant={ "body2" } >Отказано: { complaintsRejected }</Typography>
+                            <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { reports.complaintsAmount }</Typography>
+                            <Typography variant={ "body2" } >Рассмотрено: { reports.complaintsProcessed }</Typography>
+                            <Typography variant={ "body2" } >В процессе: { reports.complaintsPending }</Typography>
+                            <Typography variant={ "body2" } >Отказано: { reports.complaintsRejected }</Typography>
                             {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
                             <DescriptionTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
@@ -90,8 +80,8 @@ export const Report: FC<AuditStat> = ({
                     <Grid item xs={6}>
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
                         <div style={{padding:"15px"}}>
-                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ maxComplaintProcessingTime } мин.</b></Typography>
-                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ meanComplaintProcessingTime } мин.</b> </Typography>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ reports.maxComplaintProcessingTime } мин.</b></Typography>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ reports.meanComplaintProcessingTime } мин.</b> </Typography>
                             <AccessTimeTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
                     </Paper>
@@ -101,7 +91,7 @@ export const Report: FC<AuditStat> = ({
                     <Paper sx={{textAlign: "center", boxShadow: "0px 10px 15px darkGrey",}}>
                         <div style={{padding:"15px"}}>
                             <Typography variant={ "subtitle1" }>Самое популярное слово:</Typography>
-                            <Typography variant={ "h6" }>{ mostPopularKeywords[0] }</Typography>
+                            <Typography variant={ "h6" }>{ reports.mostPopularKeywords[0] }</Typography>
                         </div>
                     </Paper>
                 </Stack>

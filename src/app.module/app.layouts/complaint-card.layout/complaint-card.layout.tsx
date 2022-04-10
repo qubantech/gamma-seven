@@ -14,7 +14,7 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                                { onClick?: () => void, title: string, badge?: JSX.Element, date?: string, number:number}) => {
 
     return(
-        <Card sx={{width: "100%", backgroundColor:  COMPLIANT_CARD_COLOR, boxShadow: "0px 3px 3px darkGrey"}}>
+        <Card sx={{width: "100%", backgroundColor:  COMPLIANT_CARD_COLOR, marginBottom:"10px", boxShadow: "0px 3px 3px darkGrey"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
                             action={
@@ -26,9 +26,7 @@ const ComplaintCardLayout = ({onClick, title, badge, date, number}:
                             subheader={
                             <Stack direction={"row"} spacing={2}>
                                 {badge &&
-                                    <div>
-                                        badge
-                                    </div>}
+                                        badge}
                                 {date && <Stack direction={"row"} alignItems={"center"} spacing={1} style={{marginTop: '1em'}}>
                                     <TimerIcon fontSize={"small"}/>
                                     <Typography variant={"body2"}>{date}</Typography>

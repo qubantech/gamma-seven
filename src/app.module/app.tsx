@@ -14,6 +14,8 @@ import { RTDB } from "./app.resources/app.resouces.realtimedb";
 import { useUser } from './app.services/app.user.service';
 import { appAuditService } from './app.services/app.audit.service';
 import { ReportModel } from './app.services/app.audit.service/models/report.model';
+import axios from 'axios';
+import { appComplaintsService } from './app.services/app.complaints.service';
 
 export const RouterRoot = () => {
     return <BrowserRouter>
@@ -43,8 +45,8 @@ export const menuItem = (icon: JSX.Element, label?: string, link: string) => {
 
 const App = () => {
 
-    const [ user, loading, error ] = useAuthState(auth);
     const { watchedObject, setWatchedObject } = useWatchedObject<String>(RTDB.SAMPLE_PATH);
+    const [ user, loading, error ] = useAuthState(auth);
     const userdata = useUser(user?.uid || "0")
     const navigate = useNavigate()
 
@@ -52,12 +54,10 @@ const App = () => {
 
     useEffect(() => {
         setWatchedObject('Этот 1111текст отпавляется в базу и возвращается обратно');
-
-        // appAuditService.getAllReports()
-        //     .then(result => {
-        //         console.log(result)
-        //     })
-        //     .catch(error => console.log(error));
+        /*const apiUrl = "https://gateway.quban.tech/submit";
+        axios.post(apiUrl).then((resp) => {
+            const allPersons = resp.data;
+        });*/
 
         // appAuditService.createReportForUser({
         //     dateStart: "05-Aug-2010",
@@ -76,7 +76,7 @@ const App = () => {
         //         })
         //         .catch(error => console.log(error));
 
-        window.open('http://localhost:6868/report/pdf/62520ab5e50d6652ec57c527')
+        //window.open('http://localhost:6868/report/pdf/62520ab5e50d6652ec57c527')
 
         }, [])
 

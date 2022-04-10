@@ -1,10 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AppBar, Button, Dialog, IconButton, Slide, Stack, Toolbar, Typography } from '@mui/material';
 
 import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
 import { Report } from './report';
 import { TransitionProps } from '@mui/material/transitions';
 import CloseIcon from '@mui/icons-material/Close';
+import { appAuditService } from '../../../app.module/app.services/app.audit.service';
+import {
+    ReportModel,
+    ReportModelInitState,
+} from '../../../app.module/app.services/app.audit.service/models/report.model';
 
 const reports = [
     "21.02.22",
@@ -24,11 +29,11 @@ const Transition = React.forwardRef(function Transition(
 
 const ReportsList = () => {
     const [open, setOpen] = React.useState(false);
-    const [currentReport, setCurrentReport] = useState("");
+    //const [currentReport, setCurrentReport] = useState(ReportModelInitState);
 
-    const handleClickOpen = ( report: string ) => {
+    const handleClickOpen = () => {
         setOpen(true);
-        setCurrentReport( report )
+        //setCurrentReport( report )
     };
 
     const handleClose = () => {
@@ -47,7 +52,7 @@ const ReportsList = () => {
                                 variant={ "contained" }
 
                                 startIcon={ <ArticleOutlinedIcon/> }
-                                onClick={ () => handleClickOpen(report) }
+                                onClick={ () => handleClickOpen() }
                             >
                                 Отчет от { report }
                             </Button>
@@ -73,12 +78,12 @@ const ReportsList = () => {
                             <CloseIcon />
                         </IconButton>
                         <Typography  sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                            { currentReport }
+                            {/*{ currentReport }*/}s
                         </Typography>
                     </Toolbar>
                 </AppBar>
                 <Report
-                    complaintsAmount={ 0 }
+                    /*complaintsAmount={ 0 }
                     complaintsAmountPerDayHist={ [] }
                     complaintsMeaningfulnessMeanScore={ 0 }
                     complaintsPending={ 0 }
@@ -91,7 +96,7 @@ const ReportsList = () => {
                     mostPopularScripts={ ["asds", "asdas", "asda"] }
                     mostPopularTopics={ ["ada"] }
                     peakComplaintsAmountDate={ "12.12.22" }
-                    peakComplaintsAmountNumber={ 10 }
+                    peakComplaintsAmountNumber={ 10 }*/
                 />
             </Dialog>
         </>

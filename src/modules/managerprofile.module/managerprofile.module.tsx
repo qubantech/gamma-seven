@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DesktopLayout from '../../app.module/app.layouts/desktop.layout/desktop.layout';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
@@ -17,17 +17,28 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ManagermodalLayout from '../../app.module/app.layouts/managermodal.layout/managermodal.layout';
 import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import ChartrequestsModule from '../chartrequests.module/chartrequests.module';
+import { Report } from '../profile.module/components/report';
+import { complaintsModel } from '../../app.module/app.services/app.complaints.service/models/complaints.model';
+import { appComplaintsService } from '../../app.module/app.services/app.complaints.service';
 
 let drawerWidth = 480;
 
 const ManagerProfileModule = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [info, setInfo] = useState("")
+    const [complaints, setComplaints] = useState<complaintsModel[]>([])
+    useEffect(()=> {
+        appComplaintsService.getAllComplaints()
+            .then((resp) => {
+                console.log(resp)
+                setComplaints(resp)
+            })
+    },[])
+
     const columns: GridColDef[] = [
         { field: 'id', headerName: 'ID', flex:1 },
         {
-            field: 'title',
+            field: 'theme',
             headerName: 'Заголовок',
             flex:6,
             editable: false,
@@ -48,19 +59,33 @@ const ManagerProfileModule = () => {
             )
         },
         {
-            field: 'maxTime',
+            field: 'dateSent',
             headerName: 'Время',
             type: 'number',
             flex:2,
+            renderCell: params => {
+                const date2 = new Date(params.value);
+
+                // One day in milliseconds
+                const oneDay = 1000 * 60 * 60 * 24;
+
+                // Calculating the time difference between two dates
+                const diffInTime = date2.getTime() - Date.now() + 30 * oneDay;
+
+                // Calculating the no. of days between two dates
+                const diffInDays = Math.round(diffInTime / oneDay);
+                return <div>{diffInDays.toString()}</div>
+            }
         },
         {
             field: 'city',
             headerName: 'Город',
             description: 'This column has a value getter and is not sortable.',
             flex:2,
+            renderCell: params => {return <div>Krasnodar</div>}
         },
         {
-            field: 'institution',
+            field: 'institutionId',
             headerName: 'Учреждение',
             description: 'This column has a value getter and is not sortable.',
             flex:2,
@@ -71,7 +96,7 @@ const ManagerProfileModule = () => {
             description: 'This column has a value getter and is not sortable.',
             type: 'number',
             flex:1,
-            renderCell: (params => <CircularProgress variant="determinate" value={params.value} />
+            renderCell: (params => <CircularProgress variant="determinate" value={Math.floor(Math.random()*5) * 50} />
             )
         },
     ];
@@ -146,7 +171,7 @@ const ManagerProfileModule = () => {
                 <DataGrid
                     sx={{marginTop:"64px"}}
                     autoHeight={true}
-                    rows={rows}
+                    rows={complaints}
                     columns={columns}
                     pageSize={5}
                     rowsPerPageOptions={[5]}
@@ -177,28 +202,9 @@ const ManagerProfileModule = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <ChartrequestsModule/>
-                {/*<List>
-                    {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                <ArrowBackIosIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>*/}
+                {/*<ChartrequestsModule/>*/}
                 <Divider />
-                <List>
-                    {['All mail', 'Trash', 'Spam'].map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>
-                                вылов
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItem>
-                    ))}
-                </List>
+                <Report/>
             </Drawer>
         </>
     )
