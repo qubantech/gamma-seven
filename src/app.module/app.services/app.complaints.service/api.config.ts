@@ -12,8 +12,5 @@ export const COMPLAINTS = {
 };
 
 export const $complaintsApi = axios.create({
-    headers: {
-        'Access-Control-Allow-Origin': '*',
-    },
     withCredentials: true,
 });

@@ -28,6 +28,7 @@ import {
 } from '../../../app.module/app.services/app.audit.service/models/report.model';
 import { DrawerLayout } from '../../../app.module/app.layouts/drawer.layout/drawer.layout';
 import GetReportDrawerContent from './get-report-drawer-content';
+import { PiechartModule } from '../../chartrequests.module/piechart.module';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -143,16 +144,14 @@ export const Report: FC<ReportModel> = (props) => {
 
                 </Stack>
                     <Stack mb={"15px"} >
-                        <Paper sx={{textAlign: "center", boxShadow: "0px 3px 3px darkGrey"}}>
+                        {/*<Paper sx={{textAlign: "center", boxShadow: "0px 3px 3px darkGrey"}}>
                             <div style={{ padding: '15px' }}>
                                 <ChartrequestsModule/>
                             </div>
-                        </Paper>
-                    {/*<ExpandCardLayout subtitle={<div/>} title={<ChartrequestsModule/>}*/}
-                    {/*                  description={*/}
-                    {/*                      <div>*/}
-                    {/*                          Eще график*/}
-                    {/*                      </div>}/>*/}
+                        </Paper>*/}
+                    <ExpandCardLayout subtitle={<div/>} title={<PiechartModule/>}
+                                      description={
+                                          <ChartrequestsModule/>}/>
                 </Stack>
 
 

@@ -1,15 +1,6 @@
 import React, { useEffect } from 'react';
 import { Chart } from "react-google-charts";
 import Typography from '@mui/material/Typography';
-
-export const data = [
-    /*["День", "Жалобы", "ПЗ Анализы", "Ожидание", "Качество обслуживания"],
-    ["08.04", 8,4, 7,9],
-    ["09.04", 6, 6,5,3],*/
-    /*["Don Sharp (1978)", 6.5, 6.4],
-    ["James Hawes (2008)", 4.4, 6.2],*/
-];
-
 const options = {
     vAxis: { title: "Общее количество заявок" },
     isStacked: true,
@@ -21,22 +12,23 @@ const rand = () => {
     return Math.floor(Math.random()*10)
 }
 
+export const data = [
+    ["День", "Жалобы", "ПЗ Анализы", "Ожидание", "Качество обслуживания"],
+    ["03.04", rand(), rand(), rand(), rand()],
+    ["04.04", rand(), rand(), rand(), rand()],
+    ["05.04", rand(), rand(), rand(), rand()],
+    ["06.04", rand(), rand(), rand(), rand()],
+    ["07.04", rand(), rand(), rand(), rand()],
+    ["08.04", rand(), rand(), rand(), rand()],
+    ["09.04", Math.floor(rand()/3), Math.floor(rand()/3), Math.floor(rand()/3), Math.floor(rand()/3)],
+    ["10.04", Math.floor(rand()/2), Math.floor(rand()/2), Math.floor(rand()/2), Math.floor(rand()/2)]
+
+];
 
 export default function ChartrequestsModule() {
-    useEffect(()=> {
-        data.push(["День", "Жалобы", "ПЗ Анализы", "Ожидание", "Качество обслуживания"])
-        data.push(["03.04", rand(), rand(), rand(), rand()])
-        data.push(["04.04", rand(), rand(), rand(), rand()])
-        data.push(["05.04", rand(), rand(), rand(), rand()])
-        data.push(["06.04", rand(), rand(), rand(), rand()])
-        data.push(["07.04", rand(), rand(), rand(), rand()])
-        data.push(["08.04", rand(), rand(), rand(), rand()])
-        data.push(["09.04", rand()/3, rand()/3, rand()/3, rand()/3])
-        data.push(["10.04", rand()/3, rand()/3, rand()/3, rand()/3])
-    },[])
     return (
         <>
-            <Typography align={"center"} mt={"10px"}  variant={"h6"}>Распределение заявок по категориям</Typography>
+            <Typography align={"center"} mt={"10px"}  variant={"h6"}>Распределение заявок по категориям за последнюю неделю</Typography>
             {data &&
                 <Chart
                     chartType="AreaChart"
