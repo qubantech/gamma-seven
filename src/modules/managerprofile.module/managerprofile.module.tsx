@@ -20,6 +20,7 @@ import Typography from '@mui/material/Typography';
 import { Report } from '../profile.module/components/report';
 import { ComplaintsModel } from '../../app.module/app.services/app.complaints.service/models/complaints.model';
 import { appComplaintsService } from '../../app.module/app.services/app.complaints.service';
+import ReportsDrawerContent from '../profile.module/components/reports-drawer-content';
 
 let drawerWidth = 480;
 
@@ -202,7 +203,9 @@ const ManagerProfileModule = () => {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                {/*<ChartrequestsModule/>*/}
+                <Stack px={"10px"}>
+                    <ReportsDrawerContent/>
+                </Stack>
                 <Divider />
                 {/*<Report />*/}
             </Drawer>
