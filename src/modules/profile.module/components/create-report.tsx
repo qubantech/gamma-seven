@@ -28,11 +28,22 @@ const CreateReport = (props: { setDrawerState: (a:boolean) => void }) => {
         if ( creationParams.dateStart != "" ) {
             console.log(creationParams)
 
-            appAuditService.createReportForUser(creationParams, "6251e15151f2eeeb962a3507")
+            appAuditService.createReportForUser({
+                dateStart: "05-Aug-2010",
+                dateEnd: "05-Dec-2017"
+            }, "6251e15151f2eeeb962a3507")
                 .then(result => {
                     console.log(result)
+
+                    // appAuditService.createReportForUser(creationParams, result.id)
+                    //     .then(result => {
+                    //         console.log(result)
+                    //     })
+                    //     .catch(error => console.log(error));
+
                 })
                 .catch(error => console.log(error));
+
 
             // window.open('https://audit.quban.tech/report/create/user/62520ab5e50d6652ec57c527')
         }

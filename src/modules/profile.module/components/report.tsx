@@ -47,18 +47,7 @@ const gridBlockStyle = {
 
 }
 
-export const Report = () => {
-
-    const [reports, setReports] = useState<ReportModel>(ReportModelInitState)
-
-    useEffect(() => {
-        appAuditService.getAllReports()
-            .then(result => {
-                setReports(result)
-                console.log(result)
-            })
-            .catch(error => console.log(error));
-    }, [])
+export const Report: FC<ReportModel> = (props) => {
 
     return (
         <div style={{ padding: "10px" }}>
@@ -68,11 +57,10 @@ export const Report = () => {
                     <Grid item xs={6}>
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
                         <div style={{padding:"15px"}}>
-                            <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { reports.complaintsAmount }</Typography>
-                            <Typography variant={ "body2" } >Рассмотрено: { reports.complaintsProcessed }</Typography>
-                            <Typography variant={ "body2" } >В процессе: { reports.complaintsPending }</Typography>
-                            <Typography variant={ "body2" } >Отказано: { reports.complaintsRejected }</Typography>
-                            {/*<DescriptionOutlinedIcon style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>*/}
+                            <Typography variant={ "h6" } sx={{ mb: "5px" }}>Жалобы: { props.complaintsAmount }</Typography>
+                            <Typography variant={ "body2" } >Рассмотрено: { props.complaintsProcessed }</Typography>
+                            <Typography variant={ "body2" } >В процессе: { props.complaintsPending }</Typography>
+                            <Typography variant={ "body2" } >Отказано: { props.complaintsRejected }</Typography>
                             <DescriptionTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
                     </Paper>
@@ -80,8 +68,8 @@ export const Report = () => {
                     <Grid item xs={6}>
                     <Paper style={{ ...gridBlockStyle, position: "relative", overflow: "hidden", width:"100%" }}>
                         <div style={{padding:"15px"}}>
-                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ reports.maxComplaintProcessingTime } мин.</b></Typography>
-                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ reports.meanComplaintProcessingTime } мин.</b> </Typography>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2, mb: "10px" }}>Макс. время обработки: <b>{ props.maxComplaintProcessingTime } мин.</b></Typography>
+                            <Typography variant={ "body2" } sx={{ lineHeight: 1.2 }}>Ср. время обработки: <b>{ props.meanComplaintProcessingTime } мин.</b> </Typography>
                             <AccessTimeTwoToneIcon color={ "primary" } style={{ position: "absolute", bottom: -20, right: -25, fontSize: "90px", zIndex: 1 }}/>
                         </div>
                     </Paper>
@@ -91,17 +79,17 @@ export const Report = () => {
                     <Paper sx={{textAlign: "center", boxShadow: "0px 3px 3px darkGrey"}}>
                         <div style={{padding:"15px"}}>
                             <Typography variant={ "subtitle1" }>Самое популярное слово:</Typography>
-                            <Typography variant={ "h6" }>words{ reports.mostPopularKeywords[0] }</Typography>
+                            <Typography variant={ "h6" }>words{ props.mostPopularKeywords[0] }</Typography>
                         </div>
                     </Paper>
                 </Stack>
                 <Stack mb={"15px"} >
                     <ExpandCardLayout subtitle={<div/>} title={
                         <div >
-                        <Typography variant={"h6"} align={"center"}>Средняя осмысленность: 0.43</Typography>
+                        <Typography variant={"h6"} align={"center"}>Средняя осмысленность: { props.complaintsMeaningfulnessMeanScore }</Typography>
                                 <Typography py={"10px"} align={"center"}>Популярные ключевые слова:</Typography>
                                 <Grid spacing={2}>
-                                    {["words", "wods", "wcdju"].map((el) => {
+                                    { props.mostPopularKeywords.map((el) => {
                                         return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
                                     })}
                                 </Grid>
@@ -110,13 +98,13 @@ export const Report = () => {
                         <div>
                             <Typography align={"center"} py={"10px"}>Популярные темы:</Typography>
                             <Grid spacing={2} pb={"10px"}>
-                                {["words", "wods", "wcdju"].map((el) => {
+                                { props.mostPopularTopics.map((el) => {
                                     return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
                                 })}
                             </Grid>
                             <Typography align={"center"} py={"10px"}>Популярные сценарии:</Typography>
                             <Grid spacing={2}>
-                                {["words", "wods", "wcdju"].map((el) => {
+                                {props.mostPopularScripts.map((el) => {
                                     return <Chip sx={{fontSize:"16px", marginRight:"10px"}} label={el}/>
                                 })}
                             </Grid>

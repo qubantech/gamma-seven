@@ -11,11 +11,11 @@ import {
     ReportModelInitState,
 } from '../../../app.module/app.services/app.audit.service/models/report.model';
 
-const reports = [
-    "21.02.22",
-    "21.02.21",
-    "09.01.12"
-]
+// const reports = [
+//     "21.02.22",
+//     "21.02.21",
+//     "09.01.12"
+// ]
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -29,17 +29,34 @@ const Transition = React.forwardRef(function Transition(
 
 const ReportsList = () => {
     const [open, setOpen] = React.useState(false);
-    //const [currentReport, setCurrentReport] = useState(ReportModelInitState);
+    const [currentReport, setCurrentReport] = useState<ReportModel>(ReportModelInitState);
 
-    const handleClickOpen = () => {
+    const [reports, setReports] = useState<Array<ReportModel>>([]);
+
+    useEffect(()=>{
+        appAuditService.getAllReports()
+            .then(results => {
+                console.log(results)
+                setReports(results)
+            })
+            .catch(e => {
+                console.log(e)
+            })
+    }, [])
+
+
+    const handleClickOpen = (report: ReportModel) => {
         setOpen(true);
-        //setCurrentReport( report )
+        setCurrentReport( report )
     };
 
     const handleClose = () => {
         setOpen(false);
 
     };
+
+
+
 
     return (
         <>
@@ -52,9 +69,9 @@ const ReportsList = () => {
                                 variant={ "contained" }
 
                                 startIcon={ <ArticleOutlinedIcon/> }
-                                onClick={ () => handleClickOpen() }
+                                onClick={ () => handleClickOpen(report) }
                             >
-                                Отчет от { report }
+                                Отчет от { new Date(report.createdAt).toLocaleDateString("en-US") }
                             </Button>
                         )
                     })
@@ -78,26 +95,11 @@ const ReportsList = () => {
                             <CloseIcon />
                         </IconButton>
                         <Typography  sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                            {/*{ currentReport }*/}s
+                            {/*{ currentReport }*/}
                         </Typography>
                     </Toolbar>
                 </AppBar>
-                <Report
-                    /*complaintsAmount={ 0 }
-                    complaintsAmountPerDayHist={ [] }
-                    complaintsMeaningfulnessMeanScore={ 0 }
-                    complaintsPending={ 0 }
-                    complaintsProcessed={ 0 }
-                    complaintsRejected={ 0 }
-                    createdAt={ "22.12.22" }
-                    maxComplaintProcessingTime={ 24 }
-                    meanComplaintProcessingTime={ 23 }
-                    mostPopularKeywords={ ["Очередь", "dsd", "adsad"] }
-                    mostPopularScripts={ ["asds", "asdas", "asda"] }
-                    mostPopularTopics={ ["ada"] }
-                    peakComplaintsAmountDate={ "12.12.22" }
-                    peakComplaintsAmountNumber={ 10 }*/
-                />
+                <Report { ...currentReport } />
             </Dialog>
         </>
     );

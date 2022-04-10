@@ -15,6 +15,8 @@ export interface ReportModel {
     meanComplaintProcessingTime: number;
     maxComplaintProcessingTime: number;
     complaintsAmountPerDayHist: number[];
+    _id: string;
+    __v: number;
 }
 
 export const ReportModelInitState:ReportModel = {
@@ -33,5 +35,7 @@ export const ReportModelInitState:ReportModel = {
     peakComplaintsAmountDate: new Date(),
     meanComplaintProcessingTime: 0,
     maxComplaintProcessingTime: 0,
-    complaintsAmountPerDayHist: []
+    complaintsAmountPerDayHist: [],
+    _id: 'id',
+    __v: 0,
 }

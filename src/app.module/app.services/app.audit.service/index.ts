@@ -44,7 +44,7 @@ export class AppAuditService {
     }
 
     async getAllReports() {
-        const response = await $auditApi.get<ReportModel>(AUDIT.GET_ALL_REPORTS_URL);
+        const response = await $auditApi.get<Array<ReportModel>>(AUDIT.GET_ALL_REPORTS_URL);
         return response.data;
     }
 

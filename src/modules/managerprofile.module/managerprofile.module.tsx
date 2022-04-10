@@ -204,7 +204,7 @@ const ManagerProfileModule = () => {
                 <Divider />
                 {/*<ChartrequestsModule/>*/}
                 <Divider />
-                <Report/>
+                {/*<Report />*/}
             </Drawer>
         </>
     )
