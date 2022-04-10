@@ -33,7 +33,7 @@ const DesktopLayout = ({open, setOpen}:{open:boolean, setOpen:(b:boolean)=> void
                     </Typography>
                     <Stack alignItems={"center"} spacing={0} pr={"10px"}>
                         <Typography variant={"caption"}>Сегодня/по плану:</Typography>
-                        <Typography color={"red"}> 6/20</Typography>
+                        <Typography color={"white"}> 6/20</Typography>
                     </Stack>
                     <IconButton sx={{marginRight:'10px'}} onClick={() => {setOpen(!open)}}><QueryStatsIcon/></IconButton>
                     <Box sx={{ flexGrow: 0 }}>

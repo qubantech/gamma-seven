@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Button, Container, Stack, TextField, Typography } from '@mui/material';
 import { appAuditService } from '../../../app.module/app.services/app.audit.service';
 
-const CreateReport = (props: { setDrawerState: (a:boolean) => void }) => {
+const CreateReport = (props: {
+    setDrawerState: (a:boolean) => void ,
+    updateList: boolean,
+    setUpdateList: (a:boolean) => void}
+) => {
     const [startDate, setStartDate] = useState("01-Jan-2001" );
     const [endDate, setEndDate] = useState("01-Jan-2001" );
     const [creationParams, setCreationParams] = useState({ dateStart: "", dateEnd: "" });
@@ -43,9 +47,9 @@ const CreateReport = (props: { setDrawerState: (a:boolean) => void }) => {
 
                 })
                 .catch(error => console.log(error));
-
-
             // window.open('https://audit.quban.tech/report/create/user/62520ab5e50d6652ec57c527')
+            const a = props.updateList;
+            props.setUpdateList(!a);
         }
     }, [creationParams])
 

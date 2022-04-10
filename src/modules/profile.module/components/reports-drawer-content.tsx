@@ -10,6 +10,8 @@ import CreateReport from './create-report';
 const ReportsDrawerContent = () => {
     const [isReportList, setReportList] = useState(true);
     const [createReportDrawerState, setCreateReportDrawerState] = useState(false);
+    const [updateList, setUpdateList] = useState(true)
+
 
     return (
         <Stack alignItems={ "center" } justifyContent={ isReportList ?  "" : "center" } sx={{ minHeight: "50vh" }}>
@@ -24,9 +26,9 @@ const ReportsDrawerContent = () => {
                             sx={{ mt: "10px", mb: "20px" }}
                             onClick={ () => setCreateReportDrawerState(true) }
                         >
-                            Получить отчет
+                            Запросить отчет
                         </Button>
-                        <ReportsList />
+                        <ReportsList updateList={ updateList }/>
                     </>
                 )
                 ||
@@ -47,7 +49,11 @@ const ReportsDrawerContent = () => {
             <DrawerLayout
                 isOpen={ createReportDrawerState }
                 onChangeState={ setCreateReportDrawerState }
-                children={ <CreateReport setDrawerState={ setCreateReportDrawerState }/> }
+                children={ <CreateReport
+                    setDrawerState={ setCreateReportDrawerState }
+                    updateList={ updateList }
+                    setUpdateList={ setUpdateList }
+                /> }
             />
         </Stack>
     );

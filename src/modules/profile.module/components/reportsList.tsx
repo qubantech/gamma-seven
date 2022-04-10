@@ -27,7 +27,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 
-const ReportsList = () => {
+const ReportsList = (props: { updateList:boolean }) => {
     const [open, setOpen] = React.useState(false);
     const [currentReport, setCurrentReport] = useState<ReportModel>(ReportModelInitState);
 
@@ -42,21 +42,18 @@ const ReportsList = () => {
             .catch(e => {
                 console.log(e)
             })
-    }, [])
+    }, [props.updateList])
 
 
     const handleClickOpen = (report: ReportModel) => {
         setOpen(true);
-        setCurrentReport( report )
+        setCurrentReport(report)
     };
 
     const handleClose = () => {
         setOpen(false);
 
     };
-
-
-
 
     return (
         <>
@@ -71,7 +68,7 @@ const ReportsList = () => {
                                 startIcon={ <ArticleOutlinedIcon/> }
                                 onClick={ () => handleClickOpen(report) }
                             >
-                                Отчет от { new Date(report.createdAt).toLocaleDateString("en-US") }
+                                Отчет от { new Date(report.createdAt).toLocaleDateString("ru-RU") }
                             </Button>
                         )
                     })
@@ -95,7 +92,7 @@ const ReportsList = () => {
                             <CloseIcon />
                         </IconButton>
                         <Typography  sx={{ ml: 2, flex: 1 }} variant="h6" component="div">
-                            {/*{ currentReport }*/}
+                            { new Date(currentReport.createdAt).toLocaleDateString("ru-RU") }
                         </Typography>
                     </Toolbar>
                 </AppBar>

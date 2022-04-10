@@ -12,8 +12,8 @@ const Puller = styled(Box)(({ theme }) => ({
     left: 'calc(50% - 15px)',
 }));
 
-export function DrawerLayout ({isOpen, onChangeState, children, height = "auto"}:
-                                  {isOpen: boolean, onChangeState: (b:boolean) => void, children: JSX.Element, height?: string}) {
+export function DrawerLayout ({isOpen, onChangeState, children, height = "auto", style={}}:
+                                  {isOpen: boolean, onChangeState: (b:boolean) => void, children: JSX.Element, height?: string, style?: any}) {
     return (
         <SwipeableDrawer
             anchor={"bottom"}
@@ -21,6 +21,7 @@ export function DrawerLayout ({isOpen, onChangeState, children, height = "auto"}
             onClose={() => onChangeState(false)}
             onOpen={() => onChangeState(true)}
             disableSwipeToOpen={true}
+            style={ style }
         >
             <Puller onClick={() => onChangeState(false)}/>
             <div style={{padding:"15px", height: height}}>
