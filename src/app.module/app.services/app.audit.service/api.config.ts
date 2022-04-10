@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:6868';
+const BASE_URL = 'https://audit.quban.tech';
 export const AUDIT = {
     CREATE_REPORT_FOR_USER_URL: (id: string) => `${BASE_URL}/report/create/user/${id}`,
     CREATE_REPORT_FOR_INSTITUTION_URL: (id: string) => `${BASE_URL}/report/create/institution/${id}`,

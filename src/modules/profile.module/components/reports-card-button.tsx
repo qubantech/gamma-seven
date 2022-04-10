@@ -19,7 +19,7 @@ const ReportsCardButton = ( props: {onClick: () => void} ) => {
                                     <ChevronRightIcon />
                                 </IconButton>
                             }
-                            title={ <Typography variant={"body1"}> Отчеты </Typography> }
+                            title={ <Typography variant={"body1"}>Получить отчеты</Typography> }
                 />
             </CardActionArea>
         </Card>

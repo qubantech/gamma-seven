@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import {
     AppBar,
     Button, Chip,
@@ -21,6 +21,7 @@ import AccessTimeTwoToneIcon from '@mui/icons-material/AccessTimeTwoTone';
 import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
 import ExpandCardLayout from '../../../app.module/app.layouts/expand-card.layout/expand-card.layout';
 import ChartrequestsModule from '../../chartrequests.module/chartrequests.module';
+import { appAuditService } from '../../../app.module/app.services/app.audit.service';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -59,9 +60,19 @@ export const Report: FC<AuditStat> = ({
     peakComplaintsAmountNumber
 }) => {
 
+    const onDownloadClick = () => {
+        appAuditService.getReportPDFAndSendToEmail("6251e15151f2eeeb962a3507",
+            "wlashcontact@gmail.com")
+                .then(result => {
+                    console.log(result)
+                    // window.open('http://https://audit.quban.tech/report/pdf/62520ab5e50d6652ec57c527')
+                })
+                .catch(error => console.log(error));
+    }
+
     return (
         <div style={{ padding: "10px" }}>
-            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
+            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} onClick={ onDownloadClick }>Скачать отчет</Button>
             {/*<Stack spacing={2} justifyContent={ "space-evenly" } >*/}
                 <Grid mb={"15px"} container direction={ "row" } spacing={2} columns={12} >
                     <Grid item xs={6}>
