@@ -7,9 +7,9 @@ import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
 import IconButton, {IconButtonProps} from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import {purple, red} from '@mui/material/colors';
+import {red} from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import {CardActionArea, CardActions, Stack} from "@mui/material";
+import {CardActionArea, Stack} from "@mui/material";
 
 interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -37,7 +37,7 @@ const ExpandCardLayout = ({onClick, avatar, title, subtitle, righttext, descript
     };
 
     return (
-        <Card sx={{width: "100%"}}>
+        <Card sx={{width: "100%"}} style={{boxShadow: "0px 3px 3px darkGrey"}}>
             <CardActionArea>
                 <CardHeader onClick={onClick}
                             avatar={

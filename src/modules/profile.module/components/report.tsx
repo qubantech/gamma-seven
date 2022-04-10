@@ -41,7 +41,7 @@ const gridBlockStyle = {
     // width: "100%",
     width: "135px",
     height: "120px",
-    boxShadow: "0px 10px 15px darkGrey",
+    boxShadow: "0px 3px 3px darkGrey",
     // backgroundColor: "rgba(244,170,151,0.3)",
     // border: "1px solid black",
 
@@ -62,7 +62,7 @@ export const Report = () => {
 
     return (
         <div style={{ padding: "10px" }}>
-            <Button fullWidth variant={ "outlined" } sx={{ mb: "10px" }} >Скачать отчет</Button>
+            <Button fullWidth variant={ "outlined" } sx={{ mb: "30px" }} >Скачать отчет</Button>
             {/*<Stack spacing={2} justifyContent={ "space-evenly" } >*/}
                 <Grid mb={"15px"} container direction={ "row" } spacing={2} columns={12} >
                     <Grid item xs={6}>
@@ -88,16 +88,16 @@ export const Report = () => {
                     </Grid>
                 </Grid>
                 <Stack mb={"15px"}  >
-                    <Paper sx={{textAlign: "center", boxShadow: "0px 10px 15px darkGrey",}}>
+                    <Paper sx={{textAlign: "center", boxShadow: "0px 3px 3px darkGrey"}}>
                         <div style={{padding:"15px"}}>
                             <Typography variant={ "subtitle1" }>Самое популярное слово:</Typography>
-                            <Typography variant={ "h6" }>{ reports.mostPopularKeywords[0] }</Typography>
+                            <Typography variant={ "h6" }>words{ reports.mostPopularKeywords[0] }</Typography>
                         </div>
                     </Paper>
                 </Stack>
                 <Stack mb={"15px"} >
                     <ExpandCardLayout subtitle={<div/>} title={
-                        <div>
+                        <div >
                         <Typography variant={"h6"} align={"center"}>Средняя осмысленность: 0.43</Typography>
                                 <Typography py={"10px"} align={"center"}>Популярные ключевые слова:</Typography>
                                 <Grid spacing={2}>
@@ -125,11 +125,16 @@ export const Report = () => {
 
                 </Stack>
                     <Stack mb={"15px"} >
-                    <ExpandCardLayout subtitle={<div/>} title={<ChartrequestsModule/>}
-                                      description={
-                                          <div>
-                                              Eще график
-                                          </div>}/>
+                        <Paper sx={{textAlign: "center", boxShadow: "0px 3px 3px darkGrey"}}>
+                            <div style={{ padding: '15px' }}>
+                                <ChartrequestsModule/>
+                            </div>
+                        </Paper>
+                    {/*<ExpandCardLayout subtitle={<div/>} title={<ChartrequestsModule/>}*/}
+                    {/*                  description={*/}
+                    {/*                      <div>*/}
+                    {/*                          Eще график*/}
+                    {/*                      </div>}/>*/}
                 </Stack>
 
 

@@ -46,7 +46,7 @@ const WelcomeModule = () => {
             <Stack justifyContent={ "flex-end" } direction={ "column" } height={ "90vh" }>
                 <img style={{paddingTop:"100px", width:"100%"}} src={welcome2}/>
                 <Typography align={"center"} variant={"h5"} fontWeight={ 700 } sx={{mb: "15px"}}>Где начинается будущее?</Typography>
-                <Typography sx={{mb: "140px"}} align={"center"} variant={"body1"}>В основе нашей работы роботизированный алгоритм, который позволяет ускорить обработку данных в 2 раза*</Typography>
+                <Typography sx={{mb: "140px"}} align={"center"} variant={"body1"}>В основе нашей работы роботизированный алгоритм, который позволяет ускорить обработку данных в 2 раза</Typography>
                 {/*<Typography sx={{width:"100%"}} align={"center"} variant={"caption"}>*на основе внутренних исследований</Typography>*/}
 
                 <Button sx={{marginX:"15px", marginBottom:"10px", textTransform: "none"}} variant={"contained"} onClick={() => prepend()}>Далее</Button>

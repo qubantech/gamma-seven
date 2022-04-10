@@ -26,6 +26,7 @@ const CreateReport = (props: { setDrawerState: (a:boolean) => void }) => {
 
     useEffect(() => {
         if ( creationParams.dateStart != "" ) {
+            console.log(creationParams)
 
             appAuditService.createReportForUser(creationParams, "6251e15151f2eeeb962a3507")
                 .then(result => {
