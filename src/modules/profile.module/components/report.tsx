@@ -117,7 +117,7 @@ export const Report: FC<ReportModel> = (props) => {
                     <ExpandCardLayout subtitle={<div/>} title={
                         <div >
                             <Typography variant={"h6"} align={"center"}>Средняя осмысленность</Typography>
-                            <Typography  align={"center"} style={{ fontSize: "17px" }} sx={{mb: "20px"}}> { props.complaintsMeaningfulnessMeanScore }</Typography>
+                            <Typography  align={"center"} style={{ fontSize: "17px" }} sx={{mb: "20px"}}> { Math.floor(props.complaintsMeaningfulnessMeanScore * 1000) / 1000  }</Typography>
                             <Typography variant={"h6"} py={"10px"} align={"center"}>Популярные ключевые слова</Typography>
                             <Grid spacing={2}>
                                 { props.mostPopularKeywords.map((el) => {
