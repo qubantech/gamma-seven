@@ -1,4 +1,4 @@
-export interface complaintsModel {
+export interface ComplaintsModel {
     id: string,
     status: string,
     dateSent: number,

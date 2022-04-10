@@ -14,7 +14,6 @@ import InfodrawerLayout from '../../app.module/app.layouts/infodrawer.layout/inf
 import { menuItems } from '../../app.module/app.layouts/mobile.layout/mobile.layout';
 //@ts-ignore
 import zdhoo from "./img_avatar.png"
-import { auditService } from '../../app.module/app.services/app.auditstat.service';
 
 
 
@@ -26,7 +25,7 @@ import ReportsCardButton from './components/reports-card-button';
 import ReportsDrawerContent from './components/reports-drawer-content';
 import { appComplaintsService } from '../../app.module/app.services/app.complaints.service';
 import {
-    complaintsModel,
+    ComplaintsModel,
     complaintsModelInitState,
 } from '../../app.module/app.services/app.complaints.service/models/complaints.model';
 
@@ -34,9 +33,9 @@ import {
 const Profile = () => {
     const [user, loading, error ] = useAuthState(auth);
     const [value, setValue] = React.useState(0);
-    const [complaints, setComplaints] = useState<complaintsModel[]>([])
+    const [complaints, setComplaints] = useState<ComplaintsModel[]>([])
 
-    const [drawer, setDrawer] = useState<complaintsModel>(complaintsModelInitState)
+    const [drawer, setDrawer] = useState<ComplaintsModel>(complaintsModelInitState)
     const navigate = useNavigate()
 
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {

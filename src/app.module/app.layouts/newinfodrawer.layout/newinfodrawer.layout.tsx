@@ -6,7 +6,7 @@ import React from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState } from 'react';
 import { PRIMARY_COLOR } from '../../../index';
-import { complaintsModel } from '../../app.services/app.complaints.service/models/complaints.model';
+import { ComplaintsModel } from '../../app.services/app.complaints.service/models/complaints.model';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.configs';
 import { useUser } from '../../app.services/app.user.service';
@@ -36,7 +36,7 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
 
     const submit = () => {
         console.log(formData.tags)
-        let complaint:complaintsModel = {
+        let complaint:ComplaintsModel = {
                 id: (Math.floor(Math.random() *10000)).toString(),
                 status: "string",
                 dateSent: 0,

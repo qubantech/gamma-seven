@@ -1,10 +1,10 @@
 import { Chip, Drawer, Stack, SwipeableDrawer } from '@mui/material';
 import { DrawerLayout } from '../drawer.layout/drawer.layout';
 import Typography from '@mui/material/Typography';
-import { complaintsModel } from '../../app.services/app.complaints.service/models/complaints.model';
+import { ComplaintsModel } from '../../app.services/app.complaints.service/models/complaints.model';
 
 const InfodrawerLayout = ({isOpen, onChangeState, info, height = "auto"}:
-                              {isOpen: boolean, onChangeState: (b:boolean) => void, info: complaintsModel, height?: string}) => {
+                              {isOpen: boolean, onChangeState: (b:boolean) => void, info: ComplaintsModel, height?: string}) => {
     return (
         <DrawerLayout
             isOpen={isOpen}

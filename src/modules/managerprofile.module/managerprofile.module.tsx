@@ -18,7 +18,7 @@ import ManagermodalLayout from '../../app.module/app.layouts/managermodal.layout
 import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { Report } from '../profile.module/components/report';
-import { complaintsModel } from '../../app.module/app.services/app.complaints.service/models/complaints.model';
+import { ComplaintsModel } from '../../app.module/app.services/app.complaints.service/models/complaints.model';
 import { appComplaintsService } from '../../app.module/app.services/app.complaints.service';
 
 let drawerWidth = 480;
@@ -26,7 +26,7 @@ let drawerWidth = 480;
 const ManagerProfileModule = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
     const [info, setInfo] = useState("")
-    const [complaints, setComplaints] = useState<complaintsModel[]>([])
+    const [complaints, setComplaints] = useState<ComplaintsModel[]>([])
     useEffect(()=> {
         appComplaintsService.getAllComplaints()
             .then((resp) => {
