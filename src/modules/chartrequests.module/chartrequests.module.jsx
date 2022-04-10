@@ -13,15 +13,15 @@ const rand = () => {
 }
 
 export const data = [
-    ["День", "Жалобы", "ПЗ Анализы", "Ожидание", "Качество обслуживания"],
-    ["03.04", rand(), rand(), rand(), rand()],
-    ["04.04", rand(), rand(), rand(), rand()],
-    ["05.04", rand(), rand(), rand(), rand()],
-    ["06.04", rand(), rand(), rand(), rand()],
-    ["07.04", rand(), rand(), rand(), rand()],
-    ["08.04", rand(), rand(), rand(), rand()],
-    ["09.04", Math.floor(rand()/3), Math.floor(rand()/3), Math.floor(rand()/3), Math.floor(rand()/3)],
-    ["10.04", Math.floor(rand()/2), Math.floor(rand()/2), Math.floor(rand()/2), Math.floor(rand()/2)]
+    ["День", "Жалобы общего характера", "Пункты забора анализов", "Качество обслуживания"],
+    ["03.04", rand()*2, rand(), rand()],
+    ["04.04", rand()*2, rand(), rand()],
+    ["05.04", rand()*2, rand(), rand()],
+    ["06.04", rand()*2, rand(), rand()],
+    ["07.04", rand()*2, rand(), rand()],
+    ["08.04", rand()*2, rand(), rand()],
+    ["09.04", Math.floor(rand()), Math.floor(rand()/3), Math.floor(rand()/3)],
+    ["10.04", Math.floor(rand()), Math.floor(rand()/2), Math.floor(rand()/2)]
 
 ];
 

@@ -6,6 +6,8 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../../app.configs';
 import QueryStatsIcon from '@mui/icons-material/QueryStats';
+//@ts-ignore
+import icon from "./icon.svg"
 
 const DesktopLayout = ({open, setOpen}:{open:boolean, setOpen:(b:boolean)=> void}) => {
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -28,9 +30,12 @@ const DesktopLayout = ({open, setOpen}:{open:boolean, setOpen:(b:boolean)=> void
         <>
             <AppBar sx={{zIndex:1500}} position="static">
                 <Toolbar>
-                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                    <div style={{ flexGrow: 1 }}>
+                    <img src={icon}></img>
+                    </div>
+                    {/*<Typography variant="h6" component="div" >
                         Просмотр заявок
-                    </Typography>
+                    </Typography>*/}
                     <Stack alignItems={"center"} spacing={0} pr={"10px"}>
                         <Typography variant={"caption"}>Сегодня/по плану:</Typography>
                         <Typography color={"white"}> 6/20</Typography>
