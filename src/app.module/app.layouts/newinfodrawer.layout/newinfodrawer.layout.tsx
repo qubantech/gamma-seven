@@ -2,7 +2,7 @@ import { DrawerLayout } from '../drawer.layout/drawer.layout';
 import { Alert, AlertTitle, Autocomplete, Button, IconButton, Stack, TextField } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import facilities from '../../../modules/map.module/components/facilities.json';
-import React from 'react';
+import React, { Component } from 'react';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import { useState } from 'react';
 import { PRIMARY_COLOR } from '../../../index';
@@ -11,6 +11,8 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../../app.configs';
 import { useUser } from '../../app.services/app.user.service';
 import { appComplaintsService } from '../../app.services/app.complaints.service';
+//@ts-ignore
+import {ReactComponent as IconSVG} from "./icon.svg"
 
 type newReportInterface = {
     theme: string
@@ -94,6 +96,9 @@ const NewinfoDrawer = ({isOpen, onChangeState, uid, height = "auto"}:
                  <Stack spacing={2}>
                      {!complete &&
                          <>
+                             <Stack alignItems={"center"} pt={"10px"}>
+                            <IconSVG fill={"#0e73e8"}/>
+                             </Stack>
                          <TextField id="Title" name={"theme"} label="Тема" variant="standard" onChange={handleChange}
                                     style={{ marginTop: '1.1em' }} />
                          <Stack direction={"row"} spacing={2} alignItems={"center"} justifyContent={"space-between"}>
