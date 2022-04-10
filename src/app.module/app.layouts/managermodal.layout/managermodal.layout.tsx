@@ -13,13 +13,15 @@ import {
 import { styled, useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import { useEffect, useState } from 'react';
+import { ComplaintsModel } from '../../app.services/app.complaints.service/models/complaints.model';
 
-const ManagermodalLayout = ({isOpen, onChangeState, info}:
-                                {isOpen: boolean, onChangeState: (b:boolean) => void, info: any}) => {
-    const chips = [
-        "one", "two two", "three three three", "four four four four"
-    ]
-    const text = ["bjhuucdhyid yu ytr y drr t78y dr y  ytr u r 56456jkkjh u   tffytg gu h yytghjgt  ui  gy 3w467y fde4 5 7yuhfd e456 yure4r ty fdre tu decy 7trd cft6 7r5dtyui d e rfty ytr 6ty ui 6yr567uij  tyu ft tu ufy"]
+const ManagermodalLayout = ({isOpen, onChangeState, info}: {isOpen: boolean, onChangeState: (b:boolean) => void, info: any}) => {
+
+    console.log(info)
+    const chips = info.row.keywords
+    const tags = info.row.tags
+    const keywords = info.row.keywords
+    const text = info.row.text
     const [chipsActive, setChipsActive] = useState<Array<boolean>>()
     const [textValue, setTextValue] = useState("")
     const [dep, setDep] = useState('');
@@ -57,7 +59,9 @@ const ManagermodalLayout = ({isOpen, onChangeState, info}:
                         <Stack spacing={1}>
                             <Typography variant={"caption"}>Теги</Typography>
                             <Grid direction={"row"}>
-                                {chips.map((el, index) => {
+                                {
+                                    // @ts-ignore
+                                    tags.map((el, index) => {
                                     return(
                                         <Chip sx={{marginBottom:"5px", marginRight: "5px", fontSize:"16px"}}
                                               label={el}/>
@@ -66,7 +70,9 @@ const ManagermodalLayout = ({isOpen, onChangeState, info}:
                             </Grid>
                             <Typography variant={"caption"}>Ключевые слова (выберите наиболее подходящие)</Typography>
                             <Grid direction={"row"}>
-                                {chips.map((el, index) => {
+                                {
+                                    // @ts-ignore
+                                    keywords.map((el, index) => {
                                     return(
                                         <Chip color={(chipsActive && chipsActive[index]) && "primary" || "default"}
                                               onClick={() => {
@@ -90,7 +96,7 @@ const ManagermodalLayout = ({isOpen, onChangeState, info}:
                         </Stack>
                     </Grid>
                     <Grid item xs={8}>
-                        <Typography sx={{marginBottom:"20px"}} align={"center"} variant={"h4"}>Тема жалобы тема жалобы(#12345)</Typography>
+                        <Typography sx={{marginBottom:"20px"}} align={"center"} variant={"h4"}>{info.row.theme} (#{ info.row.id })</Typography>
                         <Stack spacing={1}>
                             <Grid direction={"row"}>
                                 <ButtonGroup variant="contained">

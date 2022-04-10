@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import DesktopLayout from '../../app.module/app.layouts/desktop.layout/desktop.layout';
-import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import { DataGrid, GridCellParams, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
 import {
     Chip,
@@ -26,11 +26,12 @@ let drawerWidth = 480;
 
 const ManagerProfileModule = () => {
     const [isOpenModal, setIsOpenModal] = useState(false)
-    const [info, setInfo] = useState("")
+    const [info, setInfo] = useState<any>({})
     const [complaints, setComplaints] = useState<ComplaintsModel[]>([])
-    useEffect(()=> {
+    useEffect(() => {
         appComplaintsService.getAllComplaints()
             .then((resp) => {
+                console.log("here")
                 console.log(resp)
                 setComplaints(resp)
             })
@@ -100,6 +101,30 @@ const ManagerProfileModule = () => {
             renderCell: (params => <CircularProgress variant="determinate" value={Math.floor(Math.random()*5) * 50} />
             )
         },
+        {
+            field: 'dataResponded',
+            hide: true
+        },
+        {
+            field: 'userId',
+            hide: true
+        },
+        {
+            field: 'text',
+            hide: true
+        },
+        {
+            field: 'keywords',
+            hide: true
+        },
+        {
+            field: 'response',
+            hide: true
+        },
+        {
+            field: 'score',
+            hide: true
+        }
     ];
 
     const rows = [ {id:1, title:"sdhj gh jf gg  fd  ft g cf   vfc fh b fcdrfth jg fdxs dfgh j gfd", tags:["ass","sass", "sass"], maxTime:2, city: "qw", status: 50}, {id:2, tags:"ass", maxTime:2, city: "qw"}]
@@ -177,12 +202,22 @@ const ManagerProfileModule = () => {
                     pageSize={5}
                     rowsPerPageOptions={[5]}
                     disableColumnMenu
-                    onCellClick={(e:any)=> {
+                    onCellClick={(p,e,)=> {
                         setIsOpenModal(true)
-                        setInfo("sas")
+                        // const a = p.id
+                        console.log(p)
+                        setInfo(p)
                     }}
                 />
-                <ManagermodalLayout isOpen={isOpenModal} onChangeState={setIsOpenModal} info={info} />
+                {
+
+                    isOpenModal &&
+                    <ManagermodalLayout
+                        isOpen={isOpenModal}
+                        onChangeState={setIsOpenModal}
+                        info={info} />
+                }
+
             </Main>
             <Drawer
                 sx={{
